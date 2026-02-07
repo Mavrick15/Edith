@@ -109,9 +109,9 @@ export const departmentData = [
     href: "/services/consultation-gynecologique",
   },
   {
-    title: "Laboratoire biomédical",
-    iconUrl: "/images/home_1/department_icon_2.svg",
-    href: "/services/laboratoire-biomedical",
+    title: "Soins infertilité",
+    iconUrl: "/images/home_1/department_icon_1.svg",
+    href: "/services/soins-infertilite",
   },
   {
     title: "Maternité",
@@ -119,9 +119,9 @@ export const departmentData = [
     href: "/services/maternite",
   },
   {
-    title: "Chirurgie",
-    iconUrl: "/images/home_1/department_icon_6.svg",
-    href: "/services/chirurgie",
+    title: "Pédiatrie",
+    iconUrl: "/images/home_1/department_icon_3.svg",
+    href: "/services/pediatrie",
   },
   {
     title: "Imagerie médicale",
@@ -129,9 +129,9 @@ export const departmentData = [
     href: "/services/imagerie-medicale",
   },
   {
-    title: "Soins infertilité",
-    iconUrl: "/images/home_1/department_icon_1.svg",
-    href: "/services/soins-infertilite",
+    title: "Laboratoire biomédical",
+    iconUrl: "/images/home_1/department_icon_2.svg",
+    href: "/services/laboratoire-biomedical",
   },
   {
     title: "Hospitalisation",
@@ -139,8 +139,8 @@ export const departmentData = [
     href: "/services/hospitalisation",
   },
   {
-    title: "Pédiatrie",
-    iconUrl: "/images/home_1/department_icon_3.svg",
-    href: "/services/pediatrie",
+    title: "Chirurgie",
+    iconUrl: "/images/home_1/department_icon_6.svg",
+    href: "/services/chirurgie",
   },
 ];

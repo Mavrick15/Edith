@@ -192,13 +192,13 @@ export default function AppointmentForm() {
           <option value="consultation-gynecologique">
             Consultation gynécologique
           </option>
-          <option value="laboratoire-biomedical">Laboratoire biomédical</option>
-          <option value="maternite">Maternité</option>
-          <option value="chirurgie">Chirurgie</option>
-          <option value="imagerie-medicale">Imagerie médicale</option>
           <option value="soins-infertilite">Soins infertilité</option>
-          <option value="hospitalisation">Hospitalisation</option>
+          <option value="maternite">Maternité</option>
           <option value="pediatrie">Pédiatrie</option>
+          <option value="imagerie-medicale">Imagerie médicale</option>
+          <option value="laboratoire-biomedical">Laboratoire biomédical</option>
+          <option value="hospitalisation">Hospitalisation</option>
+          <option value="chirurgie">Chirurgie</option>
         </select>
         <div className="cs_height_42 cs_height_xl_25" />
       </div>

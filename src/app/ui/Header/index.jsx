@@ -43,10 +43,10 @@ export default function Header({ logoSrc, variant }) {
                   <Image
                     src={logoSrc}
                     alt="Logo"
-                    height={110}
-                    width={700}
+                    height={55}
+                    width={400}
                     className="cs_header_logo"
-                    sizes="(max-width: 380px) 280px, (max-width: 575px) 350px, (max-width: 1199px) 490px, (max-width: 1400px) 560px, (max-width: 1700px) 620px, 700px"
+                    sizes="(max-width: 380px) 180px, (max-width: 575px) 220px, (max-width: 1199px) 300px, (max-width: 1400px) 330px, (max-width: 1700px) 360px, 400px"
                   />
                 </Link>
                 <nav className="cs_nav">

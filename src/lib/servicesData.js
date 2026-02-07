@@ -66,35 +66,35 @@ export const servicesData = [
     ],
   },
   {
-    slug: "laboratoire-biomedical",
-    title: "Laboratoire biomédical",
+    slug: "soins-infertilite",
+    title: "Soins infertilité",
     subTitle:
-      "Analyses sanguines, dosages hormonaux (FSH, LH, AMH, progestérone), examens de fertilité, dépistages prénatals. Résultats rapides pour un diagnostic précis.",
-    iconUrl: "/images/departments/servicices_icon_2.svg",
+      "Bilan d'infertilité du couple, FIV, insémination artificielle, don de gamètes, préservation de la fertilité. Accompagnement personnalisé dans votre projet parental.",
+    iconUrl: "/images/departments/servicices_icon_1.svg",
     features: [
       {
-        title: "Analyses sanguines",
+        title: "Bilan d'infertilité",
         subTitle:
-          "Bilan complet, dosage des hormones et marqueurs biologiques pour un diagnostic précis.",
-        iconUrl: "/images/departments/icon_17.svg",
+          "Bilan complet du couple pour identifier les causes et proposer un parcours adapté.",
+        iconUrl: "/images/departments/icon_31.svg",
       },
       {
-        title: "Bilan de fertilité",
+        title: "FIV et insémination",
         subTitle:
-          "FSH, LH, AMH, progestérone et autres dosages pour évaluer la réserve ovarienne.",
-        iconUrl: "/images/departments/icon_18.svg",
+          "Procréation médicalement assistée : FIV, ICSI, insémination intra-utérine.",
+        iconUrl: "/images/departments/icon_32.svg",
       },
       {
-        title: "Dépistages prénatals",
+        title: "Don de gamètes",
         subTitle:
-          "Dépistage de la trisomie 21, toxoplasmose et autres marqueurs de la grossesse.",
-        iconUrl: "/images/departments/icon_19.svg",
+          "Accès au don d'ovocytes et de spermatozoïdes pour les couples éligibles.",
+        iconUrl: "/images/departments/icon_33.svg",
       },
       {
-        title: "Résultats rapides",
+        title: "Préservation de la fertilité",
         subTitle:
-          "Délais d'obtention des résultats optimisés pour une prise en charge efficace.",
-        iconUrl: "/images/departments/icon_20.svg",
+          "Congélation d'ovocytes ou de spermatozoïdes avant un traitement pouvant affecter la fertilité.",
+        iconUrl: "/images/departments/icon_34.svg",
       },
     ],
   },
@@ -132,35 +132,35 @@ export const servicesData = [
     ],
   },
   {
-    slug: "chirurgie",
-    title: "Chirurgie",
+    slug: "pediatrie",
+    title: "Pédiatrie",
     subTitle:
-      "Chirurgie gynécologique et obstétricale : césariennes, interventions pour fibromes, kystes ovariens, endométriose, réparations périnéales. Bloc opératoire équipé et équipe expérimentée.",
-    iconUrl: "/images/departments/servicices_icon_6.svg",
+      "Soins aux nourrissons, enfants et adolescents : consultations, vaccinations, dépistages, suivi du développement et prise en charge des pathologies infantiles.",
+    iconUrl: "/images/departments/servicices_icon_3.svg",
     features: [
       {
-        title: "Césariennes",
+        title: "Vaccinations",
         subTitle:
-          "Césariennes programmées ou en urgence, réalisées dans des conditions de sécurité optimales.",
-        iconUrl: "/images/departments/icon_23.svg",
+          "Calendrier vaccinal complet pour protéger votre enfant contre les maladies évitables.",
+        iconUrl: "/images/departments/icon_39.svg",
       },
       {
-        title: "Chirurgie gynécologique",
+        title: "Maladies aiguës",
         subTitle:
-          "Traitement des fibromes, kystes ovariens et pathologies bénignes par chirurgie mini-invasive.",
-        iconUrl: "/images/departments/icon_24.svg",
+          "Prise en charge des otites, angines, infections virales et autres pathologies courantes.",
+        iconUrl: "/images/departments/icon_40.svg",
       },
       {
-        title: "Endométriose",
+        title: "Affections chroniques",
         subTitle:
-          "Prise en charge chirurgicale de l'endométriose par cœlioscopie ou laparotomie.",
-        iconUrl: "/images/departments/icon_25.svg",
+          "Suivi des enfants atteints d'asthme, diabète, allergies ou autres pathologies chroniques.",
+        iconUrl: "/images/departments/icon_41.svg",
       },
       {
-        title: "Réparations périnéales",
+        title: "Dépistages du développement",
         subTitle:
-          "Chirurgie réparatrice du périnée après accouchement ou pour prolapsus.",
-        iconUrl: "/images/departments/icon_26.svg",
+          "Bilans réguliers pour détecter tout retard et proposer une intervention précoce.",
+        iconUrl: "/images/departments/icon_42.svg",
       },
     ],
   },
@@ -198,35 +198,35 @@ export const servicesData = [
     ],
   },
   {
-    slug: "soins-infertilite",
-    title: "Soins infertilité",
+    slug: "laboratoire-biomedical",
+    title: "Laboratoire biomédical",
     subTitle:
-      "Bilan d'infertilité du couple, FIV, insémination artificielle, don de gamètes, préservation de la fertilité. Accompagnement personnalisé dans votre projet parental.",
-    iconUrl: "/images/departments/servicices_icon_1.svg",
+      "Analyses sanguines, dosages hormonaux (FSH, LH, AMH, progestérone), examens de fertilité, dépistages prénatals. Résultats rapides pour un diagnostic précis.",
+    iconUrl: "/images/departments/servicices_icon_2.svg",
     features: [
       {
-        title: "Bilan d'infertilité",
+        title: "Analyses sanguines",
         subTitle:
-          "Bilan complet du couple pour identifier les causes et proposer un parcours adapté.",
-        iconUrl: "/images/departments/icon_31.svg",
+          "Bilan complet, dosage des hormones et marqueurs biologiques pour un diagnostic précis.",
+        iconUrl: "/images/departments/icon_17.svg",
       },
       {
-        title: "FIV et insémination",
+        title: "Bilan de fertilité",
         subTitle:
-          "Procréation médicalement assistée : FIV, ICSI, insémination intra-utérine.",
-        iconUrl: "/images/departments/icon_32.svg",
+          "FSH, LH, AMH, progestérone et autres dosages pour évaluer la réserve ovarienne.",
+        iconUrl: "/images/departments/icon_18.svg",
       },
       {
-        title: "Don de gamètes",
+        title: "Dépistages prénatals",
         subTitle:
-          "Accès au don d'ovocytes et de spermatozoïdes pour les couples éligibles.",
-        iconUrl: "/images/departments/icon_33.svg",
+          "Dépistage de la trisomie 21, toxoplasmose et autres marqueurs de la grossesse.",
+        iconUrl: "/images/departments/icon_19.svg",
       },
       {
-        title: "Préservation de la fertilité",
+        title: "Résultats rapides",
         subTitle:
-          "Congélation d'ovocytes ou de spermatozoïdes avant un traitement pouvant affecter la fertilité.",
-        iconUrl: "/images/departments/icon_34.svg",
+          "Délais d'obtention des résultats optimisés pour une prise en charge efficace.",
+        iconUrl: "/images/departments/icon_20.svg",
       },
     ],
   },
@@ -264,35 +264,35 @@ export const servicesData = [
     ],
   },
   {
-    slug: "pediatrie",
-    title: "Pédiatrie",
+    slug: "chirurgie",
+    title: "Chirurgie",
     subTitle:
-      "Soins aux nourrissons, enfants et adolescents : consultations, vaccinations, dépistages, suivi du développement et prise en charge des pathologies infantiles.",
-    iconUrl: "/images/departments/servicices_icon_3.svg",
+      "Chirurgie gynécologique et obstétricale : césariennes, interventions pour fibromes, kystes ovariens, endométriose, réparations périnéales. Bloc opératoire équipé et équipe expérimentée.",
+    iconUrl: "/images/departments/servicices_icon_6.svg",
     features: [
       {
-        title: "Vaccinations",
+        title: "Césariennes",
         subTitle:
-          "Calendrier vaccinal complet pour protéger votre enfant contre les maladies évitables.",
-        iconUrl: "/images/departments/icon_39.svg",
+          "Césariennes programmées ou en urgence, réalisées dans des conditions de sécurité optimales.",
+        iconUrl: "/images/departments/icon_23.svg",
       },
       {
-        title: "Maladies aiguës",
+        title: "Chirurgie gynécologique",
         subTitle:
-          "Prise en charge des otites, angines, infections virales et autres pathologies courantes.",
-        iconUrl: "/images/departments/icon_40.svg",
+          "Traitement des fibromes, kystes ovariens et pathologies bénignes par chirurgie mini-invasive.",
+        iconUrl: "/images/departments/icon_24.svg",
       },
       {
-        title: "Affections chroniques",
+        title: "Endométriose",
         subTitle:
-          "Suivi des enfants atteints d'asthme, diabète, allergies ou autres pathologies chroniques.",
-        iconUrl: "/images/departments/icon_41.svg",
+          "Prise en charge chirurgicale de l'endométriose par cœlioscopie ou laparotomie.",
+        iconUrl: "/images/departments/icon_25.svg",
       },
       {
-        title: "Dépistages du développement",
+        title: "Réparations périnéales",
         subTitle:
-          "Bilans réguliers pour détecter tout retard et proposer une intervention précoce.",
-        iconUrl: "/images/departments/icon_42.svg",
+          "Chirurgie réparatrice du périnée après accouchement ou pour prolapsus.",
+        iconUrl: "/images/departments/icon_26.svg",
       },
     ],
   },
@@ -317,7 +317,7 @@ export function getTopServices(limit = 5) {
     "maternite",
     "soins-infertilite",
     "consultation-gynecologique",
-    "pediatrie",
+    "chirurgie",
   ];
   return topSlugs
     .slice(0, limit)

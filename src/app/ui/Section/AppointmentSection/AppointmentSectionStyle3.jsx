@@ -28,17 +28,17 @@ export default function AppointmentSectionStyle3({ title }) {
               <input
                 type="radio"
                 name="category"
-                defaultValue="laboratoire-biomedical"
+                defaultValue="soins-infertilite"
               />
-              <span>Laboratoire biomédical</span>
+              <span>Soins infertilité</span>
             </div>
             <div className="cs_appointment_category">
               <input type="radio" name="category" defaultValue="maternite" />
               <span>Maternité</span>
             </div>
             <div className="cs_appointment_category">
-              <input type="radio" name="category" defaultValue="chirurgie" />
-              <span>Chirurgie</span>
+              <input type="radio" name="category" defaultValue="pediatrie" />
+              <span>Pédiatrie</span>
             </div>
             <div className="cs_appointment_category">
               <input
@@ -52,9 +52,9 @@ export default function AppointmentSectionStyle3({ title }) {
               <input
                 type="radio"
                 name="category"
-                defaultValue="soins-infertilite"
+                defaultValue="laboratoire-biomedical"
               />
-              <span>Soins infertilité</span>
+              <span>Laboratoire biomédical</span>
             </div>
             <div className="cs_appointment_category">
               <input
@@ -65,8 +65,8 @@ export default function AppointmentSectionStyle3({ title }) {
               <span>Hospitalisation</span>
             </div>
             <div className="cs_appointment_category">
-              <input type="radio" name="category" defaultValue="pediatrie" />
-              <span>Pédiatrie</span>
+              <input type="radio" name="category" defaultValue="chirurgie" />
+              <span>Chirurgie</span>
             </div>
           </div>
           <div className="cs_appointment_submit d-none d-lg-block">
