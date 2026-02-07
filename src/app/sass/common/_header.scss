@@ -11,6 +11,10 @@
   display: inline-block;
   max-width: 180px;
 }
+/* Empêcher le logo de rétrécir dans le flex */
+.cs_site_header .cs_site_branding_logo {
+  flex-shrink: 0;
+}
 .cs_site_header {
   position: absolute;
   width: 100%;
@@ -40,7 +44,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 100px;
+    height: 140px;
+    min-height: 140px;
     position: relative;
   }
   .cs_main_header_right {
@@ -298,6 +303,59 @@
 .cs_site_branding {
   display: inline-block;
 }
+.cs_site_branding_logo {
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+  height: 110px;
+  overflow: hidden;
+  /* Next.js Image wrapper + img */
+  span,
+  img.cs_header_logo,
+  .cs_header_logo {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 110px !important;
+    object-fit: contain;
+  }
+  /* Desktop : logo s'adapte selon la largeur d'écran */
+  @media (max-width: 1700px) {
+    max-width: 620px;
+    height: 98px;
+    span, img.cs_header_logo, .cs_header_logo {
+      max-height: 98px !important;
+    }
+  }
+  @media (max-width: 1400px) {
+    max-width: 560px;
+    height: 88px;
+    span, img.cs_header_logo, .cs_header_logo {
+      max-height: 88px !important;
+    }
+  }
+  @media (max-width: 1199px) {
+    max-width: 490px;
+    height: 98px;
+    span, img.cs_header_logo, .cs_header_logo {
+      max-height: 98px !important;
+    }
+  }
+  @media (max-width: 575px) {
+    max-width: 350px;
+    height: 95px;
+    span, img.cs_header_logo, .cs_header_logo {
+      max-height: 95px !important;
+    }
+  }
+  @media (max-width: 380px) {
+    max-width: 280px;
+    height: 88px;
+    span, img.cs_header_logo, .cs_header_logo {
+      max-height: 88px !important;
+    }
+  }
+}
 
 @media screen and (min-width: 1200px) {
   .cs_site_header.cs_style1.cs_white_color {
@@ -525,7 +583,7 @@
     width: 1116px !important;
   }
 
-  .cs_site-branding {
+  .cs_site-branding:not(.cs_site_branding_logo) {
     max-width: 190px;
   }
 
@@ -621,9 +679,9 @@
       background-color: #fff;
       color: $primary;
       padding: 10px 0;
-      top: 80px;
+      top: 110px;
       overflow: auto;
-      height: calc(100vh - 80px);
+      height: calc(100vh - 110px);
       line-height: 1.6em;
       transition: all 0.4s ease;
       &.cs_active {
@@ -731,7 +789,7 @@
   }
 
   .cs_site_header.cs_style1 .cs_main_header_in {
-    height: 80px;
+    height: 110px;
   }
 
   .cs_site_header .current-menu-item > a:before {
@@ -765,7 +823,7 @@
   }
 }
 @media screen and (max-width: 575px) {
-  .cs_site-branding {
+  .cs_site-branding:not(.cs_site_branding_logo) {
     max-width: 150px;
   }
 }

@@ -9,6 +9,28 @@
   @media (max-width: 1400px) {
     padding: 60px 30px 70px;
   }
+  @media (max-width: 767px) {
+    padding: 50px 24px 60px;
+  }
+  @media (max-width: 575px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    padding: 40px 20px 50px;
+    justify-items: stretch;
+    align-items: start;
+    /* Dernier élément (5e) centré quand seul sur sa ligne */
+    .cs_funfact:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      max-width: 200px;
+    }
+  }
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 32px 16px 40px;
+  }
 }
 .cs_funfact.cs_style_1 {
   max-width: 20%;
@@ -25,8 +47,32 @@
     max-width: 50%;
   }
   @media (max-width: 575px) {
-    max-width: 100%;
-    padding: 15px 0;
+    max-width: none;
+    width: 100%;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    .cs_funfact_number {
+      font-size: 36px !important;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .cs_funfact_title {
+      font-size: 13px !important;
+      line-height: 1.3;
+    }
+  }
+  @media (max-width: 400px) {
+    padding: 16px 0;
+    .cs_funfact_number {
+      font-size: 32px !important;
+    }
+    .cs_funfact_title {
+      font-size: 14px !important;
+    }
   }
   flex: none;
   .cs_funfact_number {

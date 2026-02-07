@@ -2,6 +2,13 @@ import "./sass/index.scss";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#274760",
+};
+
 export const metadata = {
   metadataBase: new URL(siteUrl),
   icons: {
@@ -9,7 +16,9 @@ export const metadata = {
       { url: "/favicon.ico", sizes: "any" },
       { url: "/images/logo_icon.png", sizes: "32x32", type: "image/png" },
       { url: "/images/logo_icon.png", sizes: "48x48", type: "image/png" },
+      { url: "/images/logo_icon.png", sizes: "192x192", type: "image/png" },
     ],
+    apple: "/images/logo_icon.png",
   },
   title: {
     absolute: "",
@@ -29,6 +38,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <head>
         <meta name="author" content="Edith - Centre médical Kinshasa" />
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>
         {children}

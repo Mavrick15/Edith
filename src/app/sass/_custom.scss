@@ -1,3 +1,33 @@
+/* Header logo - forcer la taille (override conflits) */
+.cs_site_header .cs_site_branding_logo {
+  flex-shrink: 0 !important;
+}
+@media (max-width: 1700px) {
+  .cs_site_header .cs_site_branding_logo {
+    max-width: 620px !important;
+  }
+}
+@media (max-width: 1400px) {
+  .cs_site_header .cs_site_branding_logo {
+    max-width: 560px !important;
+  }
+}
+@media (max-width: 1199px) {
+  .cs_site_header .cs_site_branding_logo {
+    max-width: 490px !important;
+  }
+}
+@media (max-width: 575px) {
+  .cs_site_header .cs_site_branding_logo {
+    max-width: 350px !important;
+  }
+}
+@media (max-width: 380px) {
+  .cs_site_header .cs_site_branding_logo {
+    max-width: 280px !important;
+  }
+}
+
 .cs_site_header.cs_style1.cs_active_sticky {
   background-color: #fff;
 }
@@ -460,6 +490,14 @@
 }
 .react-datepicker-wrapper {
   width: 100%;
+}
+
+/* Menu mobile : meilleure réactivité au toucher */
+@media (max-width: 1199px) {
+  .cs_nav .cs_nav_list.cs_active a {
+    touch-action: manipulation;
+    cursor: pointer;
+  }
 }
 
 /* Carrousel galerie : crossfade fluide entre les images */

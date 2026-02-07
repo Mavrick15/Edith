@@ -12,6 +12,8 @@ export default function Header({ logoSrc, variant }) {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const [sideNav, setSideNav] = useState(false);
+
+  const closeMobileMenu = () => setMobileToggle(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -37,8 +39,15 @@ export default function Header({ logoSrc, variant }) {
           <div className="container">
             <div className="cs_main_header_in">
               <div className="cs_main_header_left">
-                <Link className="cs_site_branding" href="/">
-                  <Image src={logoSrc} alt="Logo" height={48} width={295} />
+                <Link className="cs_site_branding cs_site_branding_logo" href="/">
+                  <Image
+                    src={logoSrc}
+                    alt="Logo"
+                    height={110}
+                    width={700}
+                    className="cs_header_logo"
+                    sizes="(max-width: 380px) 280px, (max-width: 575px) 350px, (max-width: 1199px) 490px, (max-width: 1400px) 560px, (max-width: 1700px) 620px, 700px"
+                  />
                 </Link>
                 <nav className="cs_nav">
                   <ul
@@ -47,38 +56,38 @@ export default function Header({ logoSrc, variant }) {
                     }`}
                   >
                     <li>
-                      <Link href="/">Accueil</Link>
+                      <Link href="/" onClick={closeMobileMenu}>Accueil</Link>
                     </li>
                     <li>
-                      <Link href="/about">À propos</Link>
+                      <Link href="/about" onClick={closeMobileMenu}>À propos</Link>
                     </li>
                     <li>
-                      <Link href="/services">Services</Link>
+                      <Link href="/services" onClick={closeMobileMenu}>Services</Link>
                     </li>
                     <li>
-                      <Link href="/blog">Blog</Link>
+                      <Link href="/blog" onClick={closeMobileMenu}>Blog</Link>
                     </li>
                     <li className="menu-item-has-children">
-                      <Link href="/">Plus</Link>
+                      <Link href="/" onClick={closeMobileMenu}>Plus</Link>
                       <DropDown>
                         <ul>
                           <li>
-                            <Link href="/doctor-detail">Médecins</Link>
+                            <Link href="/doctor-detail" onClick={closeMobileMenu}>Médecins</Link>
                           </li>
                           <li>
-                            <Link href="/appointments">Rendez-vous</Link>
+                            <Link href="/appointments" onClick={closeMobileMenu}>Rendez-vous</Link>
                           </li>
                           <li>
-                            <Link href="/tarifs">Tarifs</Link>
+                            <Link href="/tarifs" onClick={closeMobileMenu}>Tarifs</Link>
                           </li>
                           <li>
-                            <Link href="/gallery">Galerie</Link>
+                            <Link href="/gallery" onClick={closeMobileMenu}>Galerie</Link>
                           </li>
                         </ul>
                       </DropDown>
                     </li>
                     <li>
-                      <Link href="/contact">Contact</Link>
+                      <Link href="/contact" onClick={closeMobileMenu}>Contact</Link>
                     </li>
                   </ul>
                   <span

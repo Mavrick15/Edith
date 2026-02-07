@@ -1,0 +1,229 @@
+/*--------------------------------------------------------------
+Responsive global - Adaptation à tous les types d'écran
+Breakpoints: 1700px, 1199px, 991px, 767px, 575px, 400px, 375px, 320px
+----------------------------------------------------------------*/
+
+/* Typographie responsive - titres h1 à h6 */
+@media (max-width: 575px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+}
+
+/* Boutons - adaptation mobile */
+@media (max-width: 575px) {
+  .cs_btn.cs_style_1 {
+    padding: 12px 24px;
+    font-size: 14px;
+    min-height: 44px; /* Zone tactile minimale */
+  }
+}
+@media (max-width: 400px) {
+  .cs_btn.cs_style_1 {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Formulaires - champs adaptatifs */
+@media (max-width: 575px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select,
+  .cs_form_field {
+    font-size: 16px !important; /* Évite zoom iOS sur focus */
+    padding: 12px 16px !important;
+    min-height: 44px !important;
+  }
+  textarea {
+    min-height: 100px !important;
+  }
+}
+
+/* Container - padding petits écrans */
+@media (max-width: 575px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Textes - éviter débordement */
+p,
+span,
+h1, h2, h3, h4, h5, h6,
+.cs_section_title,
+.cs_banner_title,
+.cs_hero_title {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Liens et boutons - zone tactile minimale 44px (mobile) */
+@media (max-width: 991px) {
+  button,
+  .cs_btn,
+  .cs_menu_toggle,
+  .cs_toolbox_btn,
+  .cs_sidebar_toggle_btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .cs_nav .cs_nav_list a {
+    min-height: 48px;
+    padding: 14px 16px !important;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Images - toujours responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Grilles - colonnes empilées sur mobile */
+@media (max-width: 767px) {
+  .row {
+    row-gap: 20px;
+  }
+}
+
+/* Sections - espacement réduit sur petit écran */
+@media (max-width: 575px) {
+  section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Zone de scroll - éviter débordement horizontal */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Banner - petits écrans */
+@media (max-width: 575px) {
+  .cs_banner .cs_banner_title {
+    font-size: 32px !important;
+  }
+  .cs_banner .cs_banner_subtitle {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 400px) {
+  .cs_banner.cs_style_1 {
+    padding: 40px 16px;
+  }
+}
+
+/* Newsletter - mobile */
+@media (max-width: 575px) {
+  .cs_newsletter .cs_newsletter_title {
+    font-size: 24px !important;
+  }
+  .cs_newsletter .cs_form_field {
+    padding: 12px 100px 12px 16px !important;
+  }
+}
+
+/* SectionHeading - mobile */
+@media (max-width: 575px) {
+  .cs_section_subtitle {
+    font-size: 14px !important;
+  }
+}
+
+/* CTA / Boutons texte - mobile */
+@media (max-width: 575px) {
+  .cs_text_btn_2 {
+    gap: 10px;
+    font-size: 15px;
+  }
+}
+
+/* Cartes / Cards - contenu adapté */
+@media (max-width: 575px) {
+  .cs_iconbox_title,
+  .cs_post_title {
+    font-size: 18px !important;
+  }
+}
+
+/* Sidebar / Sidenav - plein écran sur mobile */
+@media (max-width: 575px) {
+  .cs_sidenav_in {
+    max-width: 100%;
+    padding: 40px 24px;
+  }
+}
+
+/* Modales / Lightbox - adaptation mobile */
+@media (max-width: 575px) {
+  [role="dialog"] img {
+    max-height: 85vh;
+  }
+}
+
+/* Prix / Tarifs - mobile */
+@media (max-width: 575px) {
+  .cs_pricing_card_title,
+  .cs_pricing_amount {
+    font-size: 22px !important;
+  }
+}
+
+/* Tableaux - scroll horizontal sur mobile si débordement */
+@media (max-width: 767px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Utilitaires - masquer les retours à la ligne sur mobile */
+@media (max-width: 575px) {
+  br {
+    &.hide-mobile {
+      display: none;
+    }
+  }
+}
