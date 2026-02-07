@@ -1,0 +1,117 @@
+"use client";
+
+import { Icon } from "@iconify/react";
+import React, { useState, useEffect, useRef } from "react";
+
+const CAROUSEL_INTERVAL_MIN = 3000;
+const CAROUSEL_INTERVAL_MAX = 6000;
+const INITIAL_DELAY_MAX = 4000;
+
+const CROSSFADE_DURATION_MS = 800;
+
+export default function Portfolio({ imgUrl, images }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
+  const randomRef = useRef({
+    initialDelay: Math.random() * INITIAL_DELAY_MAX,
+    getNextInterval: () =>
+      CAROUSEL_INTERVAL_MIN +
+      Math.random() * (CAROUSEL_INTERVAL_MAX - CAROUSEL_INTERVAL_MIN),
+  });
+
+  const items = images?.length ? images : imgUrl ? [imgUrl] : [];
+  const currentImg = items[currentIndex];
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    let t;
+    const scheduleNext = () => {
+      t = setTimeout(() => {
+        setCurrentIndex((i) => {
+          setPrevIndex(i);
+          setTimeout(() => setPrevIndex(null), CROSSFADE_DURATION_MS);
+          return (i + 1) % items.length;
+        });
+        scheduleNext();
+      }, randomRef.current.getNextInterval());
+    };
+    t = setTimeout(scheduleNext, randomRef.current.initialDelay);
+    return () => clearTimeout(t);
+  }, [items.length]);
+
+  if (!currentImg) return null;
+
+  const showingPrev = prevIndex !== null && prevIndex !== currentIndex;
+
+  return (
+    <>
+      <div className="cs_portfolio cs_style_1 cs_radius_20 overflow-hidden">
+        <div className="cs_portfolio_img d-block cs_bg_filed st_lightbox_item position-relative">
+          {showingPrev && (
+            <div
+              className="cs_portfolio_carousel_layer cs_portfolio_carousel_out"
+              style={{
+                backgroundImage: `url(${items[prevIndex]})`,
+              }}
+            />
+          )}
+          <div
+            key={currentIndex}
+            className="cs_portfolio_carousel_layer cs_portfolio_carousel_in"
+            style={{
+              backgroundImage: `url(${currentImg})`,
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className="border-0 bg-transparent p-0 w-100 h-100 d-block position-absolute top-0 start-0"
+            style={{ cursor: "zoom-in", zIndex: 5 }}
+          >
+            <img
+              src={currentImg}
+              alt=""
+              className="w-100 h-100 object-fit-cover opacity-0"
+            />
+          </button>
+          <span className="cs_link_hover">
+            <i>
+              <Icon icon="fa6-solid:arrows-up-down-left-right" />
+            </i>
+          </span>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Agrandir l'image"
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+          style={{
+            zIndex: 9999,
+            backgroundColor: "rgba(0,0,0,0.9)",
+          }}
+          onClick={() => setIsOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setIsOpen(false)}
+            className="position-absolute top-0 end-0 m-3 border-0 bg-white rounded-circle p-2"
+            aria-label="Fermer"
+          >
+            <Icon icon="fa6-solid:xmark" />
+          </button>
+          <img
+            src={currentImg}
+            alt="Galerie"
+            className="max-w-100 max-h-100 object-contain"
+            style={{ maxHeight: "90vh" }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
+  );
+}

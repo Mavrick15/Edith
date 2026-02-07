@@ -1,0 +1,108 @@
+"use client";
+
+import Section from "@/app/ui/Section";
+import AboutSectionStyle2 from "@/app/ui/Section/AboutSection/AboutSectionStyle2";
+import AppointmentSection from "@/app/ui/Section/AppointmentSection";
+import BannerSectionStyle7 from "@/app/ui/Section/BannerSection/BannerSectionStyle7";
+import FeaturesSectionStyle3 from "@/app/ui/Section/FeaturesSection/FeaturesSectionStyle3";
+import TeamSectionStyle3 from "@/app/ui/Section/TeamSection/TeamSectionStyle3";
+import { getServiceBySlug } from "@/lib/servicesData";
+import { notFound, useParams } from "next/navigation";
+
+import bannerImg from "../../../../../public/images/departments/banner_img_3.png";
+import aboutImg from "../../../../../public/images/departments/department_img_1.png";
+import appointmentImg from "../../../../../public/images/home_1/appointment.png";
+
+const doctorData = [
+  {
+    imgUrl: "/images/departments/related_doctor_1.jpeg",
+    name: "Dr. Mboloko Esimo Justin",
+    designation: "Gynécologue-obstétricien",
+    description: "Expert en fertilité et PMA",
+    social: [
+      { icon: "fa6-brands:facebook-f", href: "/about" },
+      { icon: "fa6-brands:linkedin-in", href: "/about" },
+      { icon: "fa6-brands:twitter", href: "/about" },
+    ],
+    availableUrl: "/doctor-detail",
+    callUrl: "/contact",
+    chatUrl: "/contact",
+    btnText: "Réserver",
+    btnUrl: "/appointments",
+  },
+  {
+    imgUrl: "/images/departments/related_doctor_1.jpeg",
+    name: "Dr. Mboloko Esimo Justin",
+    designation: "Gynécologue-obstétricien",
+    description: "Expert en fertilité et PMA",
+    social: [
+      { icon: "fa6-brands:facebook-f", href: "/about" },
+      { icon: "fa6-brands:linkedin-in", href: "/about" },
+      { icon: "fa6-brands:twitter", href: "/about" },
+    ],
+    availableUrl: "/doctor-detail",
+    callUrl: "/contact",
+    chatUrl: "/contact",
+    btnText: "Réserver",
+    btnUrl: "/appointments",
+  },
+];
+
+export default function ServiceDetailsClient() {
+  const params = useParams();
+  const slug = params?.slug;
+  const service = getServiceBySlug(slug);
+
+  if (!service) {
+    notFound();
+  }
+
+  return (
+    <>
+      <Section topMd={135} topLg={100} topXl={100}>
+        <AboutSectionStyle2
+          title={`Service de ${service.title.toLowerCase()}`}
+          subTitle={service.subTitle}
+          imgUrl={aboutImg}
+        />
+      </Section>
+
+      <Section topMd={170} topLg={145} topXl={90}>
+        <FeaturesSectionStyle3
+          sectionTitle="Traitements"
+          sectionTitleUp="TYPES DE"
+          data={service.features}
+        />
+      </Section>
+
+      <Section topMd={200} topLg={150} topXl={100}>
+        <TeamSectionStyle3 sectionTitle="Médecins associés" data={doctorData} />
+      </Section>
+
+      <Section
+        topMd={190}
+        topLg={145}
+        topXl={105}
+        bottomMd={190}
+        bottomLg={145}
+        bottomXl={110}
+        id="appointment"
+      >
+        <AppointmentSection
+          sectionTitle="Rendez-vous"
+          sectionTitleUp="PRENDRE UN"
+          imgUrl={appointmentImg}
+        />
+      </Section>
+
+      <Section className="cs_footer_margin_0">
+        <BannerSectionStyle7
+          imgUrl={bannerImg}
+          bgUrl="/images/departments/banner_bg_3.svg"
+          title="Ne négligez pas votre santé !"
+          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels <br />de santé expérimentés !"
+        />
+      </Section>
+    </>
+  );
+}
