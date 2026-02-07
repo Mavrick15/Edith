@@ -53,7 +53,7 @@ export default function Testimonial() {
                 width={125}
               />
               <div className="cs_testimonial_1_avatar_right">
-                <h3 className="cs_fs_24 cs_semibold mb-0">Benyamin Baki</h3>
+                <h3 className="cs_fs_24 cs_semibold mb-0">Joel Ngakinono</h3>
                 <p className="cs_heading_color mb-0">Kinshasa, RDC</p>
               </div>
             </div>
@@ -70,11 +70,11 @@ export default function Testimonial() {
               width={50}
             />
             <p>
-              J&apos;ai accouché de mon premier enfant à Edith. L&apos;équipe de
-              la maternité a été exceptionnelle : professionnelle, à
-              l&apos;écoute et rassurante. Les sages-femmes m&apos;ont
-              accompagnée tout au long de mon accouchement avec bienveillance.
-              Je recommande vivement ce centre aux mamans de Kinshasa.
+              Ma femme a accouché de notre premier enfant à Edith. L&apos;équipe
+              de la maternité a été exceptionnelle : professionnelle, à
+              l&apos;écoute et rassurante. Les sages-femmes ont accompagné ma
+              femme tout au long de l&apos;accouchement avec bienveillance. Je
+              recommande vivement ce centre aux familles de Kinshasa.
             </p>
             <Rating ratingNumber={5} />
           </div>
@@ -106,10 +106,10 @@ export default function Testimonial() {
               width={50}
             />
             <p>
-              Je consulte Edith pour le suivi de ma grossesse depuis le début.
-              Les échographies sont claires, les médecins prennent le temps
-              d&apos;expliquer et les rendez-vous sont bien organisés. Un
-              établissement de confiance pour la santé des femmes à Kinshasa.
+              Ma sœur consulte Edith pour le suivi de sa grossesse depuis le
+              début. Les échographies sont claires, les médecins prennent le
+              temps d&apos;expliquer et les rendez-vous sont bien organisés. Un
+              établissement de confiance pour les familles à Kinshasa.
             </p>
             <Rating ratingNumber={5} />
           </div>

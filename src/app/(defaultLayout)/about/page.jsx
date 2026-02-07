@@ -66,7 +66,7 @@ const teamData = [
   },
   {
     imgUrl: "/images/about/doctor_1.png",
-    name: "Dr. KELAKELA John",
+    name: "Dr. Kelakela Hillaire",
     designation: "Assistant senior",
     description:
       "En charge des grossesses pathologiques, césariennes et urgences obstétricales. Interne senior en gynécologie-obstétrique.",
@@ -78,7 +78,7 @@ const teamData = [
   },
   {
     imgUrl: "/images/about/doctor_3.png",
-    name: "Dr. Baki Benyamin",
+    name: "Dr. Ngakinono Joel",
     designation: "Assistant senior",
     description:
       "Interne senior en gynécologie-obstétrique, spécialisé dans le suivi des grossesses et la prise en charge des patientes en consultation.",
