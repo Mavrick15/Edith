@@ -227,3 +227,33 @@ html, body {
     }
   }
 }
+
+/* Formulaire rendez-vous - mobile : champs date/heure lisibles (icônes ne masquent plus) */
+@media (max-width: 575px) {
+  .cs_with_icon_input {
+    i {
+      top: 50%;
+      transform: translateY(-50%);
+      left: 16px;
+      font-size: 18px;
+    }
+    .cs_form_field,
+    .react-datepicker-wrapper input {
+      padding-left: 48px !important;
+      padding-right: 16px !important;
+      min-height: 48px !important;
+    }
+  }
+}
+@media (max-width: 400px) {
+  .cs_with_icon_input {
+    i {
+      left: 12px;
+      font-size: 16px;
+    }
+    .cs_form_field,
+    .react-datepicker-wrapper input {
+      padding-left: 42px !important;
+    }
+  }
+}
