@@ -99,8 +99,8 @@ export default function ServiceDetailsClient() {
         <BannerSectionStyle7
           imgUrl={bannerImg}
           bgUrl="/images/departments/banner_bg_3.svg"
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels <br />de santé expérimentés !"
+          title="Faites le premier pas — prenez rendez-vous"
+          subTitle="Nos spécialistes vous accompagnent pour votre projet parental. <br />Réservez votre créneau dès aujourd'hui."
         />
       </Section>
     </>

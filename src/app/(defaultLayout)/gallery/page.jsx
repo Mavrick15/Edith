@@ -18,8 +18,8 @@ export default function Gallery() {
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl={bannerImg}
-        title="Galerie Edith"
-        subTitle="Nos installations et dernières activités"
+        title="Découvrez nos installations"
+        subTitle="Un cadre moderne et accueillant pour votre suivi"
       />
       <Section
         topMd={170}
@@ -37,8 +37,8 @@ export default function Gallery() {
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle9
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels de santé expérimentés !"
+          title="Prenez rendez-vous et venez nous rencontrer"
+          subTitle="Votre projet parental mérite les meilleurs soins — nos spécialistes vous attendent."
           imgUrl={bannerImgDoctor}
           btnText="Prendre rendez-vous"
           btnUrl="/appointments"

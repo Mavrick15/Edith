@@ -89,7 +89,7 @@ export default function Footer() {
               <div className="cs_footer_item">
                 <Newsletter
                   title="Restez informé"
-                  subTitle="Recevez les dernières actualités santé de nos experts"
+                  subTitle="Recevez conseils et actualités sur la fertilité et la santé féminine"
                 />
               </div>
             </div>

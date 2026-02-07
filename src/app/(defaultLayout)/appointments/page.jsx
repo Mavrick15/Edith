@@ -11,8 +11,8 @@ export default function Appointments() {
       <BannerSectionStyle3
         bgUrl="/images/appointments/banner_bg.svg"
         imgUrl={bannerImg}
-        title="Ne négligez pas votre santé !"
-        subTitle="Remplissez le formulaire ci-dessous pour prendre rendez-vous avec l'un de nos professionnels de santé."
+        title="Réservez votre créneau dès maintenant"
+        subTitle="Faites le premier pas — nos spécialistes vous attendent pour accompagner votre projet parental."
         className="cs_appointments_banner"
       />
       <Section

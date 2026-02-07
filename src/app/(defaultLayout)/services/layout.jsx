@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Nos services",
   description:
-    "Découvrez les services médicaux d'Edith à Kinshasa : gynécologie, maternité, laboratoire, chirurgie, imagerie et bien plus.",
+    "Gynécologie-obstétrique, maternité, fertilité & PMA à Kinshasa. Suivi de grossesse, accouchement, FIV, imagerie et laboratoire.",
 };
 
 export default function ServicesLayout({ children }) {

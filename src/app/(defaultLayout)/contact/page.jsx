@@ -8,7 +8,7 @@ import bannerImg from "../../../../public/images/contact/banner_img.png";
 export const metadata = {
   title: "Contact",
   description:
-    "Contactez le centre médical Edith à Kinshasa. Posez vos questions ou prenez rendez-vous.",
+    "Contactez Edith — gynécologie-obstétrique et fertilité à Kinshasa. Questions grossesse, FIV ou rendez-vous : notre équipe vous répond.",
 };
 
 export default function Contact() {
@@ -17,8 +17,8 @@ export default function Contact() {
       <BannerSectionStyle5
         bgUrl="/images/contact/banner_bg.svg"
         imgUrl={bannerImg}
-        title="Contactez-nous"
-        subTitle="N'hésitez pas à nous contacter pour une réponse et des soins rapides"
+        title="Une question ? Nous vous répondons"
+        subTitle="Prenez contact dès aujourd'hui — notre équipe est à votre écoute pour votre projet parental."
       />
       <div className="container cs_mt_minus_110">
         <div className="row">
@@ -35,7 +35,7 @@ export default function Contact() {
         bottomLg={150}
         bottomXl={110}
       >
-        <ContactInfoSection sectionTitle="Nous trouver" />
+        <ContactInfoSection sectionTitle="Venez nous rencontrer" />
       </Section>
     </>
   );

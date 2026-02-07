@@ -22,13 +22,13 @@ export const metadata = {
   },
   title: {
     absolute: "",
-    default: "Edith - Centre médical Kinshasa",
-    template: "%s | Edith - Centre médical Kinshasa",
+    default: "Edith - Gynécologie, obstétrique & fertilité | Kinshasa",
+    template: "%s | Edith - Gynécologie & fertilité Kinshasa",
   },
-  description: "Centre médical spécialisé en gynécologie-obstétrique, fertilité et PMA à Kinshasa, RDC.",
+  description: "Gynécologie-obstétrique, maternité & fertilité à Kinshasa. Suivi de grossesse, accouchement, FIV et PMA — accompagner votre projet parental.",
   openGraph: {
-    title: "Edith - Centre médical Kinshasa",
-    description: "Centre médical spécialisé en gynécologie-obstétrique, fertilité et PMA à Kinshasa, RDC.",
+    title: "Edith - Gynécologie, obstétrique & fertilité à Kinshasa",
+    description: "Gynécologie-obstétrique, maternité & fertilité à Kinshasa. Suivi de grossesse, accouchement, FIV et PMA — accompagner votre projet parental.",
     // Image générée par opengraph-image.jsx (1200×630)
   },
 };

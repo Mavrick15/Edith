@@ -18,8 +18,8 @@ export default function Blog() {
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl={bannerImg}
-        title="Blog Edith"
-        subTitle="Fertilité, gynécologie et santé reproductive"
+        title="Actualités santé"
+        subTitle="Conseils et infos sur la fertilité, la grossesse et la santé féminine"
       />
       <Section
         topMd={170}
@@ -37,8 +37,8 @@ export default function Blog() {
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle9
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels de santé expérimentés !"
+          title="Votre projet parental mérite les meilleurs soins"
+          subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes dès aujourd'hui."
           imgUrl={bannerImgCta}
           btnText="Prendre rendez-vous"
           btnUrl="/appointments"

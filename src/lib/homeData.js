@@ -3,31 +3,31 @@ export const featureListData = [
     iconSrc: "/images/home_1/compassion.svg",
     title: "Compassion",
     subTitle:
-      "Nous comprenons que consulter un médecin peut être une expérience stressante et émotionnelle. Nous nous efforçons de créer un environnement accueillant et bienveillant qui met nos patients en confiance.",
+      "La grossesse et le parcours de fertilité touchent à l'intime. Nous créons un environnement bienveillant où chaque patiente est écoutée et accompagnée avec empathie.",
   },
   {
     iconSrc: "/images/home_1/excellence.svg",
     title: "Excellence",
     subTitle:
-      "Nous nous engageons à fournir des soins médicaux et des services d'excellence à nos patients. Nous croyons en l'amélioration continue de nos compétences, connaissances et ressources pour offrir les meilleurs soins possibles.",
+      "Gynécologie-obstétrique et PMA : une expertise reconnue pour des soins de pointe. Suivi des grossesses, accouchements et procréation médicalement assistée à Kinshasa.",
   },
   {
     iconSrc: "/images/home_1/integrity.svg",
     title: "Intégrité",
     subTitle:
-      "Nous croyons en une pratique de la médecine avec intégrité et honnêteté. Nous sommes transparents dans notre communication et nos processus décisionnels, et nous plaçons toujours les intérêts de nos patients en premier.",
+      "Transparence et honnêteté dans chaque consultation. Nous plaçons votre projet parental et votre santé au cœur de nos décisions médicales.",
   },
   {
     iconSrc: "/images/home_1/respect.svg",
     title: "Respect",
     subTitle:
-      "Nous traitons toutes les personnes avec respect et dignité, quelles que soient leurs origines, croyances ou circonstances. Nous croyons que chaque personne mérite d'être traitée avec compassion et bienveillance.",
+      "Chaque femme mérite des soins adaptés à sa situation. Respect de votre intimité, de vos choix et de votre rythme dans votre parcours de santé.",
   },
   {
     iconSrc: "/images/home_1/teamwork.svg",
     title: "Travail\u00A0d'équipe",
     subTitle:
-      "Nous croyons en la collaboration avec nos collègues et les autres professionnels de santé pour fournir des soins complets et efficaces à nos patients.",
+      "Gynécologues, obstétriciens, sages-femmes et biologistes unis pour votre suivi. Une prise en charge pluridisciplinaire pour maternité et fertilité.",
   },
 ];
 
@@ -46,7 +46,7 @@ export const faqData = [
   {
     title: "Quels services Edith propose-t-il ?",
     content:
-      "Edith offre une gamme complète de services médicaux incluant les consultations générales, les spécialités, les examens de routine, la consultation gynécologique et bien plus encore. Contactez-nous pour plus d'informations.",
+      "Edith est spécialisé en gynécologie-obstétrique et fertilité : suivi de grossesse, accouchement, consultations gynécologiques, FIV, insémination, imagerie médicale et laboratoire. Contactez-nous pour plus d'informations.",
   },
   {
     title: "Comment prendre rendez-vous avec Edith ?",

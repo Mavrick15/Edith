@@ -18,27 +18,27 @@ const departmentData = getTopServices(5);
 
 const featureListData = [
   {
-    title: "Professionnels de santé expérimentés",
+    title: "Spécialistes <br />gynéco-obstétriques",
     subTitle:
-      "Notre équipe comprend des médecins, infirmiers <br />et autres professionnels de santé dévoués <br />à offrir les meilleurs soins possibles à nos patients.",
+      "Gynécologues, obstétriciens et sages-femmes dévoués <br />au suivi de grossesse, à l'accouchement et à la <br />santé féminine à chaque étape de la vie.",
     iconUrl: "/images/icons/professional.svg",
   },
   {
-    title: "Services <br />complets",
+    title: "Maternité & <br />fertilité",
     subTitle:
-      "Nous proposons une large gamme de services de santé, <br />des soins préventifs aux traitements spécialisés <br />pour les affections complexes.",
+      "De la conception à la naissance : consultations, <br />FIV, insémination, bilan de fertilité et suivi <br />personnalisé de votre projet parental.",
     iconUrl: "/images/icons/comprehensive.svg",
   },
   {
-    title: "Approche <br />centrée patient",
+    title: "Approche <br />centrée patiente",
     subTitle:
-      "Nous traitons chaque patient comme un individu unique <br />et prenons le temps de comprendre vos besoins <br />et préoccupations en matière de santé.",
+      "Chaque femme est unique. Nous prenons le temps <br />d'écouter vos besoins, vos questions et votre <br />parcours en matière de santé reproductive.",
     iconUrl: "/images/icons/patient.svg",
   },
   {
-    title: "Installations <br />modernes",
+    title: "Équipements <br />de pointe",
     subTitle:
-      "Notre centre de santé est équipé des dernières <br />technologies et équipements pour offrir à nos <br />patients les soins les plus avancés.",
+      "Échographie, laboratoire, bloc opératoire : des <br />installations modernes pour des soins gynécologiques <br />et obstétricaux de qualité à Kinshasa.",
     iconUrl: "/images/icons/facilities.svg",
   },
 ];
@@ -116,18 +116,18 @@ export default function About() {
         bgUrl="/images/about/banner_bg.svg"
         imgUrl={bannerImg}
         title="Bienvenue au <br />Centre médical Edith"
-        subTitle="Votre partenaire santé et bien-être"
+        subTitle="Votre projet parental mérite les meilleurs soins — prenez rendez-vous avec nos spécialistes"
       />
       <Section topMd={200} topLg={150} topXl={110}>
         <DepartmentSectionStyle2
-          sectionTitle="Nos meilleurs services"
-          sectionTitleUp="SERVICES"
+          sectionTitle="Découvrez ce que nous proposons"
+          sectionTitleUp="NOS SERVICES"
           data={departmentData}
         />
       </Section>
       <Section topMd={175} topLg={125} topXl={85} bottomMd={100} bottomLg={110}>
         <FeaturesSectionStyle2
-          sectionTitle="Pourquoi nous choisir"
+          sectionTitle="Pourquoi des centaines de femmes nous font confiance"
           imgUrl={whyChooseUsImg}
           data={featureListData}
         />
@@ -163,15 +163,15 @@ export default function About() {
         <AwardSectionStyle2
           sectionTitle="Prix et distinctions <br />remportés"
           sectionTitleUp="RÉCOMPENSES"
-          sectionSubTitle="Nous avons été reconnus pour notre engagement <br />en faveur de l'excellence des soins de santé."
+          sectionSubTitle="Reconnus pour notre expertise en gynécologie-obstétrique <br />et notre engagement pour la santé maternelle et la fertilité."
           data={awardData}
         />
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle4
           bgUrl="/images/about/banner_bg_2.png"
-          title="Ne laissez pas votre santé <br />passer au second plan !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels de santé expérimentés !"
+          title="Faites le premier pas — prenez rendez-vous"
+          subTitle="Votre projet parental mérite les meilleurs soins. Nos spécialistes vous attendent à Kinshasa."
           center
         />
       </Section>

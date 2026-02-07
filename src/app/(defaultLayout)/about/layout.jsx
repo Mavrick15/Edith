@@ -1,7 +1,7 @@
 export const metadata = {
   title: "À propos",
   description:
-    "Découvrez l'équipe et les valeurs du centre médical Edith à Kinshasa. Professionnels de santé dévoués à votre bien-être.",
+    "Équipe Edith : gynécologues, obstétriciens et sages-femmes à Kinshasa. Expertise en maternité, fertilité et santé féminine.",
 };
 
 export default function AboutLayout({ children }) {

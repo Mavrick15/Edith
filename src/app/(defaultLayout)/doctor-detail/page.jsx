@@ -106,8 +106,8 @@ export default function DoctorDetail() {
 
       <Section className="cs_footer_margin_0 cs_doctor_detail_banner_wrap">
         <BannerSectionStyle9
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous avec l'un de nos professionnels de santé expérimentés dès aujourd'hui !"
+          title="Réservez une consultation avec notre spécialiste"
+          subTitle="Faites le premier pas — prenez rendez-vous dès aujourd'hui."
           imgUrl={bannerImg}
           imgClassName="cs_img_shift_right"
           sectionClassName="cs_doctor_detail_banner"

@@ -28,8 +28,8 @@ export default function Home() {
   return (
     <>
       <Hero
-        title="Votre partenaire santé et bien-être"
-        subTitle="Nous nous engageons à vous offrir les meilleurs services médicaux et de santé pour vous aider à vivre plus sainement et plus heureux."
+        title="Votre projet parental mérite les meilleurs soins"
+        subTitle="Prenez rendez-vous dès aujourd'hui — nos spécialistes en gynécologie, obstétrique et fertilité vous accompagnent à Kinshasa."
         bgUrl="/images/home_1/hero_bg.jpeg"
         imgUrl={heroImage}
         videoBtnText="Découvrez notre fonctionnement"
@@ -64,7 +64,7 @@ export default function Home() {
         bottomLg={140}
         bottomXl={100}
       >
-        <FeaturesSection sectionTitle="Nos valeurs" data={featureListData} />
+        <FeaturesSection sectionTitle="Ce qui nous inspire — et vous accompagne" data={featureListData} />
       </Section>
       {/* End Feature Section */}
 
@@ -78,9 +78,9 @@ export default function Home() {
           featureList={[
             {
               featureListTitle:
-                "Edith est une équipe de professionnels de santé expérimentés",
+                "Votre projet parental mérite les meilleurs soins",
               featureListSubTitle:
-                "Dédiée à fournir des services de santé de haute qualité. Nous croyons en une approche holistique de la santé qui vise à traiter la personne dans son ensemble, et non seulement la maladie ou les symptômes.",
+                "Edith accompagne les femmes à chaque étape : de la contraception au suivi de grossesse, de l'accouchement au suivi des nouveau-nés. Notre expertise en procréation médicalement assistée (PMA) aide les couples à réaliser leur projet parental.",
             },
           ]}
         />
@@ -90,7 +90,7 @@ export default function Home() {
       {/* Start Departments Section */}
       <Section topMd={185} topLg={150} topXl={110}>
         <DepartmentSection
-          sectionTitle="Nos services"
+          sectionTitle="Découvrez ce que nous proposons pour vous"
           bgUrl="/images/home_1/department_bg.svg"
           data={departmentData}
         />
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* Start Award Section */}
       <Section topMd={185} topLg={140} topXl={100}>
-        <AwardSection sectionTitle="Nos récompenses" data={awardData} />
+        <AwardSection sectionTitle="Reconnus pour notre excellence" data={awardData} />
       </Section>
       {/* End Award Section */}
 
@@ -114,8 +114,8 @@ export default function Home() {
         bottomXl={110}
       >
         <TestimonialSection
-          sectionTitle="Témoignages"
-          sectionTitleDown="de nos patients"
+          sectionTitle="Ils nous font confiance"
+          sectionTitleDown="et vous recommandent"
         />
       </Section>
       {/* End Testimonial */}
@@ -125,8 +125,8 @@ export default function Home() {
         <Banner
           bgUrl="/images/home_1/cta_bg.svg"
           imgUrl={bannerImg}
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels de santé expérimentés !"
+          title="Faites le premier pas — prenez rendez-vous"
+          subTitle="Votre projet parental mérite les meilleurs soins. Nos spécialistes vous attendent à Kinshasa."
         />
       </Section>
       {/* End Banner Section */}
@@ -134,8 +134,8 @@ export default function Home() {
       {/* Start Blog Section */}
       <Section topMd={190} topLg={145} topXl={105}>
         <BlogSection
-          sectionTitle="Dernières actualités"
-          sectionTitleUp="ARTICLES DU BLOG"
+          sectionTitle="Restez informé sur votre santé"
+          sectionTitleUp="ACTUALITÉS"
           data={blogList}
         />
       </Section>
@@ -144,7 +144,7 @@ export default function Home() {
       {/* Start Appointment Section */}
       <Section topMd={190} topLg={145} topXl={105} id="appointment">
         <AppointmentSection
-          sectionTitle="Rendez-vous"
+          sectionTitle="Réservez votre créneau dès maintenant"
           sectionTitleUp="PRENDRE UN"
           imgUrl={appointmentImg}
         />
@@ -155,8 +155,8 @@ export default function Home() {
       <Section topMd={190} topLg={145} topXl={105} id="faq">
         <FaqSection
           data={faqData}
-          sectionTitle="fréquemment posées"
-          sectionTitleUp="Questions"
+          sectionTitle="Réponses à vos questions"
+          sectionTitleUp="BESOIN D'INFO ?"
         />
       </Section>
       {/* End FAQ Section */}

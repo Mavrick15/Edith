@@ -158,10 +158,19 @@
 .cs_hero.cs_style_1 {
   .cs_hero_img {
     height: 100%;
-    transform: translateX(150px);
+    transform: translateX(250px);
     img {
       height: 100%;
       width: initial;
+    }
+    @media (max-width: 1480px) {
+      transform: translateX(180px);
+    }
+    @media (max-width: 1199px) {
+      transform: translateX(100px);
+    }
+    @media (max-width: 991px) {
+      transform: none;
     }
   }
   .cs_text_btn_2,
@@ -169,6 +178,12 @@
   .cs_hero_subtitle {
     position: relative;
     z-index: 1;
+  }
+  .cs_hero_subtitle {
+    margin-bottom: 70px;
+    @media (max-width: 991px) {
+      margin-bottom: 25px;
+    }
   }
 
   .cs_hero_text {

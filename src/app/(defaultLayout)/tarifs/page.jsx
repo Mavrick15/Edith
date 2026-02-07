@@ -17,8 +17,8 @@ export default function Tarifs() {
       <BannerSectionStyle3
         bgUrl="/images/pricing_plan/banner_bg.svg"
         imgUrl={bannerImg}
-        title="Trouvez le forfait <br />adapté à vos besoins"
-        subTitle="Découvrez nos offres d'abonnement et commencez votre parcours vers une meilleure santé"
+        title="Investissez dans votre santé <br />féminine"
+        subTitle="Des forfaits adaptés à votre projet parental — prenez rendez-vous pour en savoir plus."
         btnText="Commencer"
         btnUrl="/contact"
       />
@@ -59,7 +59,7 @@ export default function Tarifs() {
       >
         <BannerSectionStyle10
           imgUrl={bannerImgBtm}
-          title="Choisissez votre forfait et investissez dans votre santé dès aujourd'hui !"
+          title="Faites le premier pas — prenez rendez-vous pour découvrir nos forfaits"
         />
       </Section>
     </>

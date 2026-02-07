@@ -131,8 +131,8 @@ export default function BlogDetailsClient({ slug }) {
       <Spacing md="200" xl="150" lg="110" />
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle9
-          title="Ne négligez pas votre santé !"
-          subTitle="Prenez rendez-vous dès aujourd'hui avec l'un de nos professionnels <br />de santé expérimentés !"
+          title="Votre projet parental mérite les meilleurs soins"
+          subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes <br />dès aujourd'hui."
           imgUrl={bannerImg}
         />
       </Section>
