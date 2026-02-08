@@ -1,4 +1,5 @@
 import "./sass/index.scss";
+import Preloader from "./ui/Preloader";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
 
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>
+        <Preloader />
         {children}
       </body>
     </html>

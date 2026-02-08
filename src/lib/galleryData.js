@@ -19,13 +19,28 @@ export const galleryBySize = {
     { imgUrl: "/images/about/portfolio_6_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_7_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_13_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_17_lg.png" },
+    { imgUrl: "/images/about/portfolio_16_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_19_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_20_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_21_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_22_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_23_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_26_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_27_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_28_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_30_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_31_lg.jpeg" },
   ],
   medium_791x644: [
     { imgUrl: "/images/about/portfolio_5_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_8_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_10_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_12_lg.jpeg" },
-    { imgUrl: "/images/about/portfolio_16_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_33_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_35_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_36_lg.jpeg" },
+
   ],
   tall_791x1074: [
     { imgUrl: "/images/about/portfolio_1_lg.jpeg" },
@@ -33,6 +48,11 @@ export const galleryBySize = {
     { imgUrl: "/images/about/portfolio_11_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_14_lg.jpeg" },
     { imgUrl: "/images/about/portfolio_15_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_24_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_25_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_29_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_32_lg.jpeg" },
+    { imgUrl: "/images/about/portfolio_34_lg.jpeg" },
   ],
   wide_1611x644: [
     { imgUrl: "/images/about/portfolio_4_lg.jpeg" }
@@ -66,21 +86,72 @@ export const galleryPageSlotOrder = [
 ];
 
 /**
+ * Durées de changement (en ms) par catégorie.
+ * Chaque slot a un intervalle et un crossfade différents.
+ */
+const categoryTiming = {
+  small_527x429: {
+    intervalMin: 6500,
+    intervalMax: 8500,
+    crossfadeMs: 600,
+  },
+  medium_791x644: {
+    intervalMin: 7200,
+    intervalMax: 9500,
+    crossfadeMs: 700,
+  },
+  tall_791x1074: {
+    intervalMin: 7500,
+    intervalMax: 10000,
+    crossfadeMs: 750,
+  },
+  wide_1611x644: {
+    intervalMin: 8000,
+    intervalMax: 11000,
+    crossfadeMs: 900,
+  },
+};
+
+/**
  * Retourne les photos groupées pour la page À propos.
- * Chaque slot reçoit la liste complète de sa catégorie pour le carrousel.
+ * Chaque slot reçoit la liste de sa catégorie (mélangée) et des durées de changement propres à la catégorie.
  */
 export function getAboutGalleryData() {
-  return aboutGallerySlotOrder.map((size) => ({
-    images: galleryBySize[size].map(({ imgUrl }) => imgUrl),
-  }));
+  return aboutGallerySlotOrder.map((size) => {
+    const timing = categoryTiming[size] || categoryTiming.small_527x429;
+    return {
+      images: shuffle(galleryBySize[size].map(({ imgUrl }) => imgUrl)),
+      intervalMin: timing.intervalMin,
+      intervalMax: timing.intervalMax,
+      crossfadeMs: timing.crossfadeMs,
+    };
+  });
+}
+
+/**
+ * Mélange un tableau de manière aléatoire (Fisher-Yates)
+ */
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
 /**
  * Retourne les photos groupées pour la page Galerie.
- * Chaque slot reçoit la liste complète de sa catégorie pour le carrousel.
+ * Chaque slot reçoit la liste de sa catégorie (mélangée) et des durées de changement propres à la catégorie.
  */
 export function getGalleryPageData() {
-  return galleryPageSlotOrder.map((size) => ({
-    images: galleryBySize[size].map(({ imgUrl }) => imgUrl),
-  }));
+  return galleryPageSlotOrder.map((size) => {
+    const timing = categoryTiming[size] || categoryTiming.small_527x429;
+    return {
+      images: shuffle(galleryBySize[size].map(({ imgUrl }) => imgUrl)),
+      intervalMin: timing.intervalMin,
+      intervalMax: timing.intervalMax,
+      crossfadeMs: timing.crossfadeMs,
+    };
+  });
 }

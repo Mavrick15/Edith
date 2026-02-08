@@ -3,25 +3,35 @@
 import { Icon } from "@iconify/react";
 import React, { useState, useEffect, useRef } from "react";
 
-const CAROUSEL_INTERVAL_MIN = 3000;
-const CAROUSEL_INTERVAL_MAX = 6000;
+const DEFAULT_INTERVAL_MIN = 3000;
+const DEFAULT_INTERVAL_MAX = 6000;
+const DEFAULT_CROSSFADE_MS = 800;
 const INITIAL_DELAY_MAX = 4000;
 
-const CROSSFADE_DURATION_MS = 800;
-
-export default function Portfolio({ imgUrl, images }) {
+export default function Portfolio({
+  imgUrl,
+  images,
+  intervalMin = DEFAULT_INTERVAL_MIN,
+  intervalMax = DEFAULT_INTERVAL_MAX,
+  crossfadeMs = DEFAULT_CROSSFADE_MS,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(null);
   const randomRef = useRef({
     initialDelay: Math.random() * INITIAL_DELAY_MAX,
     getNextInterval: () =>
-      CAROUSEL_INTERVAL_MIN +
-      Math.random() * (CAROUSEL_INTERVAL_MAX - CAROUSEL_INTERVAL_MIN),
+      intervalMin + Math.random() * (intervalMax - intervalMin),
   });
 
   const items = images?.length ? images : imgUrl ? [imgUrl] : [];
   const currentImg = items[currentIndex];
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    randomRef.current.getNextInterval = () =>
+      intervalMin + Math.random() * (intervalMax - intervalMin);
+  }, [intervalMin, intervalMax]);
 
   useEffect(() => {
     if (items.length <= 1) return;
@@ -30,7 +40,7 @@ export default function Portfolio({ imgUrl, images }) {
       t = setTimeout(() => {
         setCurrentIndex((i) => {
           setPrevIndex(i);
-          setTimeout(() => setPrevIndex(null), CROSSFADE_DURATION_MS);
+          setTimeout(() => setPrevIndex(null), crossfadeMs);
           return (i + 1) % items.length;
         });
         scheduleNext();
@@ -38,7 +48,7 @@ export default function Portfolio({ imgUrl, images }) {
     };
     t = setTimeout(scheduleNext, randomRef.current.initialDelay);
     return () => clearTimeout(t);
-  }, [items.length]);
+  }, [items.length, crossfadeMs]);
 
   if (!currentImg) return null;
 
@@ -53,6 +63,7 @@ export default function Portfolio({ imgUrl, images }) {
               className="cs_portfolio_carousel_layer cs_portfolio_carousel_out"
               style={{
                 backgroundImage: `url(${items[prevIndex]})`,
+                animationDuration: `${crossfadeMs}ms`,
               }}
             />
           )}
@@ -61,6 +72,7 @@ export default function Portfolio({ imgUrl, images }) {
             className="cs_portfolio_carousel_layer cs_portfolio_carousel_in"
             style={{
               backgroundImage: `url(${currentImg})`,
+              animationDuration: `${crossfadeMs}ms`,
             }}
           />
           <button

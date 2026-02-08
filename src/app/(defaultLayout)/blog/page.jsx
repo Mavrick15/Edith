@@ -37,7 +37,7 @@ export default function Blog() {
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle9
-          title="Votre projet parental mérite les meilleurs soins"
+          title="Votre projet parental mérite <br />les meilleurs soins"
           subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes dès aujourd'hui."
           imgUrl={bannerImgCta}
           btnText="Prendre rendez-vous"
