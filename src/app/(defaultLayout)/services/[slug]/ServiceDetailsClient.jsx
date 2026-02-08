@@ -15,7 +15,7 @@ import appointmentImg from "../../../../../public/images/home_1/appointment.png"
 
 const doctorData = [
   {
-    imgUrl: "/images/departments/related_doctor_1.jpeg",
+    imgUrl: "/images/departments/related_doctor_1.png",
     name: "Dr. Mboloko Esimo Justin",
     designation: "Gynécologue-obstétricien",
     description: "Expert en fertilité et PMA",
@@ -31,16 +31,51 @@ const doctorData = [
     btnUrl: "/appointments",
   },
   {
-    imgUrl: "/images/departments/related_doctor_1.jpeg",
-    name: "Dr. Mboloko Esimo Justin",
-    designation: "Gynécologue-obstétricien",
-    description: "Expert en fertilité et PMA",
+    imgUrl: "/images/about/doctor_2.png",
+    name: "Dr. Mosanda Rachidi",
+    designation: "Assistant",
+    description:
+      "Assure le suivi des grossesses, les accouchements et les consultations gynécologiques dans le cadre de son internat en gynéco-obstétrique.",
     social: [
       { icon: "fa6-brands:facebook-f", href: "/about" },
       { icon: "fa6-brands:linkedin-in", href: "/about" },
       { icon: "fa6-brands:twitter", href: "/about" },
     ],
-    availableUrl: "/doctor-detail",
+    availableUrl: "/contact",
+    callUrl: "/contact",
+    chatUrl: "/contact",
+    btnText: "Réserver",
+    btnUrl: "/appointments",
+  },
+  {
+    imgUrl: "/images/about/doctor_1.png",
+    name: "Dr. Kelakela Hillaire",
+    designation: "Assistant senior",
+    description:
+      "En charge des grossesses pathologiques, césariennes et urgences obstétricales. Interne senior en gynécologie-obstétrique.",
+    social: [
+      { icon: "fa6-brands:facebook-f", href: "/about" },
+      { icon: "fa6-brands:linkedin-in", href: "/about" },
+      { icon: "fa6-brands:twitter", href: "/about" },
+    ],
+    availableUrl: "/contact",
+    callUrl: "/contact",
+    chatUrl: "/contact",
+    btnText: "Réserver",
+    btnUrl: "/appointments",
+  },
+  {
+    imgUrl: "/images/about/doctor_3.png",
+    name: "Dr. Ngakinono Joel",
+    designation: "Assistant senior",
+    description:
+      "Interne senior en gynécologie-obstétrique, spécialisé dans le suivi des grossesses et la prise en charge des patientes en consultation.",
+    social: [
+      { icon: "fa6-brands:facebook-f", href: "/about" },
+      { icon: "fa6-brands:linkedin-in", href: "/about" },
+      { icon: "fa6-brands:twitter", href: "/about" },
+    ],
+    availableUrl: "/contact",
     callUrl: "/contact",
     chatUrl: "/contact",
     btnText: "Réserver",

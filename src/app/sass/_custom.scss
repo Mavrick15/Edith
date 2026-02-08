@@ -74,6 +74,21 @@
     }
   }
 }
+/* Page doctor-detail : descendre la photo du médecin */
+.cs_doctor_detail_section .cs_single_doctor img {
+  object-fit: cover;
+  object-position: center bottom;
+}
+@media (min-width: 576px) {
+  .cs_doctor_detail_section .cs_single_doctor {
+    margin-top: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .cs_doctor_detail_section .cs_single_doctor {
+    margin-top: 60px;
+  }
+}
 /* Page doctor-detail : remonter l'image appointment_img */
 .cs_doctor_detail_appointment .cs_appointment_img {
   transform: translateY(-80px);

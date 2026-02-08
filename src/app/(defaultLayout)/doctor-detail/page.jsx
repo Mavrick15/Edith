@@ -11,7 +11,7 @@ import doctorImg from "../../../../public/images/doctors/doctor_details.png";
 export default function DoctorDetail() {
   return (
     <>
-      <Section bottomMd={190} bottomLg={150} bottomXl={110}>
+      <Section bottomMd={190} bottomLg={150} bottomXl={110} className="cs_doctor_detail_section">
         <DoctorDetailsSection
           bgUrl="/images/doctors/doctor_details_bg.svg"
           imgUrl={doctorImg}
@@ -106,7 +106,7 @@ export default function DoctorDetail() {
 
       <Section className="cs_footer_margin_0 cs_doctor_detail_banner_wrap">
         <BannerSectionStyle9
-          title="Réservez une consultation avec notre spécialiste"
+          title="Réservez une consultation <br />avec notre spécialiste"
           subTitle="Faites le premier pas — prenez rendez-vous dès aujourd'hui."
           imgUrl={bannerImg}
           imgClassName="cs_img_shift_right"
