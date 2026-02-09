@@ -2,3 +2,15 @@ name = "edith-medical"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+# Variables pour le blog admin (Cloudflare KV)
+# À remplir : votre Account ID et l'ID du namespace KV (voir CLOUDFLARE_SETUP.md)
+[vars]
+CLOUDFLARE_ACCOUNT_ID = "777ec3364551bfb4fa3a5b54982affa3"
+CLOUDFLARE_KV_NAMESPACE_ID = "d08e43cfd0b24a54b77e187202738445"
+
+# Namespace KV pour le blog (créer avec : pnpm wrangler kv:namespace create BLOG)
+# Renseigner l'id après création
+[[kv_namespaces]]
+binding = "BLOG_KV"
+id = "d08e43cfd0b24a54b77e187202738445"
