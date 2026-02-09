@@ -5,7 +5,7 @@ export const servicesData = [
     subTitle:
       "Suivi des grossesses à haut et bas risque, consultations prénatales, préparation à l'accouchement, accouchement et suites de couches. Prise en charge complète de la santé de la femme enceinte.",
     iconUrl: "/images/departments/servicices_icon_5.svg",
-    imgUrl: "/images/departments/gynécologie_obstétrique.jpeg",
+    imgUrl: "/images/departments/gynecologie_obstetrique.jpeg",
     features: [
       {
         title: "Suivi des grossesses",
@@ -39,7 +39,7 @@ export const servicesData = [
     subTitle:
       "Consultations de gynécologie générale : dépistages (frottis, frottis HPV), contraception, troubles du cycle, suivi de ménopause, prévention et conseils en santé féminine.",
     iconUrl: "/images/departments/servicices_icon_8.svg",
-    imgUrl: "/images/departments/consultation_gynécologique.jpeg",
+    imgUrl: "/images/departments/consultation_gynecologique.jpeg",
     features: [
       {
         title: "Dépistages",
@@ -107,7 +107,7 @@ export const servicesData = [
     subTitle:
       "Accompagnement personnalisé pendant la grossesse, accouchement dans des conditions optimales, suites de couches et soins au nouveau-né. Équipe dédiée pour vivre sereinement votre maternité.",
     iconUrl: "/images/departments/servicices_icon_3.svg",
-    imgUrl: "/images/departments/Maternité.jpeg",
+    imgUrl: "/images/departments/maternite.jpeg",
     features: [
       {
         title: "Préparation à la naissance",
@@ -175,7 +175,7 @@ export const servicesData = [
     subTitle:
       "Échographies obstétricales et gynécologiques, échographies pelviennes, doppler. Examens d'imagerie pour le diagnostic et le suivi des grossesses et pathologies féminines.",
     iconUrl: "/images/departments/servicices_icon_9.svg",
-    imgUrl: "/images/departments/Imagerie_médicale.jpeg",
+    imgUrl: "/images/departments/imagerie_medicale.jpeg",
     features: [
       {
         title: "Échographie obstétricale",
@@ -209,7 +209,7 @@ export const servicesData = [
     subTitle:
       "Analyses sanguines, dosages hormonaux (FSH, LH, AMH, progestérone), examens de fertilité, dépistages prénatals. Résultats rapides pour un diagnostic précis.",
     iconUrl: "/images/departments/servicices_icon_2.svg",
-    imgUrl: "/images/departments/Laboratoire_biomédical.jpeg",
+    imgUrl: "/images/departments/laboratoire_biomedical.jpeg",
     features: [
       {
         title: "Analyses sanguines",
@@ -243,7 +243,7 @@ export const servicesData = [
     subTitle:
       "Séjours courts pour accouchement, interventions chirurgicales ou surveillance. Chambres confortables, équipe soignante disponible 24h/24 pour votre tranquillité.",
     iconUrl: "/images/departments/servicices_icon_4.svg",
-    imgUrl: "/images/departments/Hospitalisation.jpeg",
+    imgUrl: "/images/departments/hospitalisation.jpeg",
     features: [
       {
         title: "Chambres confortables",
