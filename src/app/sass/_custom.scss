@@ -73,11 +73,28 @@
   overflow: visible !important;
   .cs_banner_img {
     right: -120px !important;
+    transform: translateX(80px) translateY(40px);
     @media (max-width: 1700px) {
       right: -90px !important;
+      transform: translateX(60px) translateY(30px);
     }
     @media (max-width: 1199px) {
       right: -60px !important;
+      transform: translateX(40px) translateY(20px);
+    }
+    @media (max-width: 991px) {
+      transform: translateX(30px) translateY(0);
+    }
+    /* Réduire la taille de l'image banner_img_3.png */
+    img {
+      max-width: 75% !important;
+      height: auto !important;
+      @media (max-width: 1199px) {
+        max-width: 70% !important;
+      }
+      @media (max-width: 991px) {
+        max-width: 65% !important;
+      }
     }
   }
 }
@@ -117,12 +134,12 @@
     }
   }
   .cs_banner.cs_style_7 .cs_banner_img {
-    transform: translateX(-50%) translateY(40px);
+    transform: translateX(calc(-50% + 80px)) translateY(40px);
     @media (max-width: 1199px) {
-      transform: translateX(-50%) translateY(30px);
+      transform: translateX(calc(-50% + 60px)) translateY(30px);
     }
     @media (max-width: 767px) {
-      transform: translateX(-50%) translateY(20px);
+      transform: translateX(calc(-50% + 40px)) translateY(20px);
     }
     
     /* Réduire la taille de l'image banner_img_3.png */
@@ -138,12 +155,12 @@
     }
   }
   .cs_banner.cs_style_9 .cs_banner_img {
-    transform: translateY(40px);
+    transform: translateX(80px) translateY(40px);
     @media (max-width: 1199px) {
-      transform: translateY(30px);
+      transform: translateX(60px) translateY(30px);
     }
     @media (max-width: 991px) {
-      transform: translateY(0);
+      transform: translateX(40px) translateY(0);
     }
     
     /* Réduire la taille de l'image banner_img_3.png */
@@ -159,8 +176,12 @@
     }
   }
 }
+/* Bouton vidéo "Découvrez notre fonctionnement" - fond transparent */
+.cs_hero .cs_hero_btn_wrap .cs_video_open,
 .cs_video_open {
   cursor: pointer;
+  background: transparent !important;
+  border: none !important;
 }
 .cs_banner.cs_style_1 .cs_banner_img {
   @media (max-width: 1199px) {

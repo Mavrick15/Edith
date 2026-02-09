@@ -151,7 +151,7 @@ export default function BlogDetailsClient({ slug }) {
       </div>
       <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle9
-          title="Votre projet parental mérite <br />les meilleurs soins"
+          title="Votre projet parental<br />mérite les meilleurs soins"
           subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes dès<br />aujourd'hui."
           imgUrl={bannerImg}
         />
