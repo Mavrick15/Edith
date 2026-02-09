@@ -1,6 +1,7 @@
 "use client";
 
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
 const DEFAULT_INTERVAL_MIN = 3000;
@@ -31,7 +32,7 @@ export default function Portfolio({
     if (items.length <= 1) return;
     randomRef.current.getNextInterval = () =>
       intervalMin + Math.random() * (intervalMax - intervalMin);
-  }, [intervalMin, intervalMax]);
+  }, [intervalMin, intervalMax, items.length]);
 
   useEffect(() => {
     if (items.length <= 1) return;
@@ -81,11 +82,15 @@ export default function Portfolio({
             className="border-0 bg-transparent p-0 w-100 h-100 d-block position-absolute top-0 start-0"
             style={{ cursor: "zoom-in", zIndex: 5 }}
           >
-            <img
-              src={currentImg}
-              alt=""
-              className="w-100 h-100 object-fit-cover opacity-0"
-            />
+            <span className="position-relative d-block w-100 h-100">
+              <Image
+                src={currentImg}
+                alt=""
+                fill
+                className="object-cover opacity-0"
+                sizes="100vw"
+              />
+            </span>
           </button>
           <span className="cs_link_hover">
             <i>
@@ -115,13 +120,18 @@ export default function Portfolio({
           >
             <Icon icon="fa6-solid:xmark" />
           </button>
-          <img
-            src={currentImg}
-            alt="Galerie"
-            className="max-w-100 max-h-100 object-contain"
-            style={{ maxHeight: "90vh" }}
+          <div
+            className="position-relative"
+            style={{ width: "90vw", height: "90vh" }}
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <Image
+              src={currentImg}
+              alt="Galerie"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       )}
     </>
