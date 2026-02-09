@@ -2,7 +2,7 @@ import Section from "@/app/ui/Section";
 import BannerSectionStyle3 from "@/app/ui/Section/BannerSection/BannerSectionStyle3";
 import BannerSectionStyle9 from "@/app/ui/Section/BannerSection/BannerSectionStyle9";
 import BlogSectionStyle2 from "@/app/ui/Section/BlogSection/BlogSectionStyle2";
-import { blogList } from "@/lib/blogData";
+import { getBlogData } from "@/lib/blogDataServer";
 import bannerImg from "../../../../public/images/about/banner_img.png";
 import bannerImgCta from "../../../../public/images/doctors/banner_img_3.png";
 
@@ -12,7 +12,8 @@ export const metadata = {
     "Articles sur la fertilité, la gynécologie et la santé reproductive. Conseils et actualités du centre médical Edith à Kinshasa.",
 };
 
-export default function Blog() {
+export default async function Blog() {
+  const { list } = await getBlogData();
   return (
     <>
       <BannerSectionStyle3
@@ -27,7 +28,7 @@ export default function Blog() {
         topXl={110}
       >
         <BlogSectionStyle2
-          data={blogList}
+          data={list}
           sectionTitleUp="ARTICLES"
           sectionTitle="Dernières actualités"
         />

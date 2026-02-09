@@ -109,6 +109,14 @@ export default function Footer() {
             <div className="cs_copyright">
               © {new Date().getFullYear()} Edith - Centre médical Kinshasa.
               Tous droits réservés.
+              <Link
+                href="/admin/blog"
+                className="text-white-50 ms-2"
+                style={{ fontSize: "0.75rem", opacity: 0.6 }}
+                title="Espace rédaction"
+              >
+                ✎
+              </Link>
             </div>
           </div>
         </div>

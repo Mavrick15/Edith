@@ -11,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { blogArticles, blogList } from "@/lib/blogData";
 import bannerImg from "../../../../../public/images/doctors/banner_img_3.png";
 
 const tags = [
@@ -24,14 +23,12 @@ const tags = [
   { tag: "Gynécologie obstétrique", href: "/blog/consultation-gynecologique" },
 ];
 
-export default function BlogDetailsClient({ slug }) {
-  const article = slug ? blogArticles[slug] : null;
-
+export default function BlogDetailsClient({ slug, article, blogList }) {
   if (!article) {
     notFound();
   }
 
-  const relatedBlog = blogList.filter((b) => b.slug !== slug);
+  const relatedBlog = blogList?.filter((b) => b.slug !== slug) || [];
 
   // Préparer les données pour ArticleSchema
   const articleForSchema = {
@@ -58,7 +55,7 @@ export default function BlogDetailsClient({ slug }) {
               ))}
             </div>
             <div className="cs_blog_details_date">
-              {article.date} 2025 | {article.author}
+              {article.date} | {article.author}
             </div>
           </div>
           <div className="cs_social_links_wrap">

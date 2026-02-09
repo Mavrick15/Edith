@@ -1,17 +1,20 @@
-import { blogArticles, blogList } from "@/lib/blogData";
+import { getBlogData, getBlogArticle } from "@/lib/blogDataServer";
 import BlogDetailsClient from "./BlogDetailsClient";
 
-export function generateStaticParams() {
-  return blogList.map((article) => ({
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const { list } = await getBlogData();
+  return list.map((article) => ({
     slug: article.slug,
   }));
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata({ params }) {
   const slug = params?.slug;
-  const article = slug ? blogArticles[slug] : null;
+  const article = slug ? await getBlogArticle(slug) : null;
   if (!article) return {};
   
   const description = article.sections?.[0]?.text?.slice(0, 160) || article.title;
@@ -48,7 +51,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function BlogDetailsPage({ params }) {
+export default async function BlogDetailsPage({ params }) {
   const slug = params?.slug;
-  return <BlogDetailsClient slug={slug} />;
+  const article = slug ? await getBlogArticle(slug) : null;
+  const { list } = await getBlogData();
+  return <BlogDetailsClient slug={slug} article={article} blogList={list} />;
 }

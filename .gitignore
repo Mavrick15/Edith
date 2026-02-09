@@ -35,3 +35,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uploaded blog images (kept locally)
+/public/images/blog/uploads/*.jpg
+/public/images/blog/uploads/*.jpeg
+/public/images/blog/uploads/*.png
+/public/images/blog/uploads/*.webp
+/public/images/blog/uploads/*.gif
