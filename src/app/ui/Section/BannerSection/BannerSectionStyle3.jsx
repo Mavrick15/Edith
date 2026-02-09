@@ -20,9 +20,11 @@ export default function BannerSectionStyle3({
       <div className="cs_banner_img">
         <Image
           src={imgUrl}
-          alt="Banner"
+          alt={title || "Bannière promotionnelle"}
           className="cs_main_banner_img"
-          placeholder="blur"
+          width={800}
+          height={600}
+          priority={true}
         />
       </div>
       <div className="container">

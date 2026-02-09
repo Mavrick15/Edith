@@ -96,18 +96,22 @@ export default function AppointmentForm() {
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
       <div className="col-lg-6">
-        <label className="cs_input_label cs_heading_color">Date préférée</label>
+        <label className="cs_input_label cs_heading_color" htmlFor="appt-date">
+          Date préférée
+        </label>
         <div className="cs_with_icon_input">
           <DatePicker
+            id="appt-date"
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat="dd/MM/yyyy"
             minDate={new Date()}
             isClearable
             placeholderText="dd/mm/yyyy"
+            aria-label="Sélectionner une date préférée"
           />
-          <i>
-            <Icon icon="fa6-solid:calendar-days" />
+          <i aria-hidden="true">
+            <Icon icon="fa6-solid:calendar-days" aria-hidden="true" />
           </i>
         </div>
         <div className="cs_height_42 cs_height_xl_25" />
@@ -123,55 +127,57 @@ export default function AppointmentForm() {
             type="time"
             className="cs_form_field cs_timepicker"
           />
-          <i>
-            <Icon icon="fa6-regular:clock" />
+          <i aria-hidden="true">
+            <Icon icon="fa6-regular:clock" aria-hidden="true" />
           </i>
         </div>
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
       <div className="col-lg-12">
-        <label className="cs_input_label cs_heading_color">
-          Motif de la consultation
-        </label>
-        <div className="cs_radio_group">
-          <div className="cs_radio_wrap">
-            <input
-              className="cs_radio_input"
-              type="radio"
-              name="reasonForVisit"
-              id="routineCheckup"
-              value="routineCheckup"
-            />
-            <label className="cs_radio_label" htmlFor="routineCheckup">
-              Bilan de routine
-            </label>
+        <fieldset>
+          <legend className="cs_input_label cs_heading_color" id="reason-legend">
+            Motif de la consultation
+          </legend>
+          <div className="cs_radio_group" role="radiogroup">
+            <div className="cs_radio_wrap">
+              <input
+                className="cs_radio_input"
+                type="radio"
+                name="reasonForVisit"
+                id="routineCheckup"
+                value="routineCheckup"
+              />
+              <label className="cs_radio_label" htmlFor="routineCheckup">
+                Bilan de routine
+              </label>
+            </div>
+            <div className="cs_radio_wrap">
+              <input
+                className="cs_radio_input"
+                type="radio"
+                name="reasonForVisit"
+                id="newPatientVisit"
+                value="newPatientVisit"
+                defaultChecked
+              />
+              <label className="cs_radio_label" htmlFor="newPatientVisit">
+                Première consultation
+              </label>
+            </div>
+            <div className="cs_radio_wrap">
+              <input
+                className="cs_radio_input"
+                type="radio"
+                name="reasonForVisit"
+                id="specificConcern"
+                value="specificConcern"
+              />
+              <label className="cs_radio_label" htmlFor="specificConcern">
+                Problème spécifique
+              </label>
+            </div>
           </div>
-          <div className="cs_radio_wrap">
-            <input
-              className="cs_radio_input"
-              type="radio"
-              name="reasonForVisit"
-              id="newPatientVisit"
-              value="newPatientVisit"
-              defaultChecked
-            />
-            <label className="cs_radio_label" htmlFor="newPatientVisit">
-              Première consultation
-            </label>
-          </div>
-          <div className="cs_radio_wrap">
-            <input
-              className="cs_radio_input"
-              type="radio"
-              name="reasonForVisit"
-              id="specificConcern"
-              value="specificConcern"
-            />
-            <label className="cs_radio_label" htmlFor="specificConcern">
-              Problème spécifique
-            </label>
-          </div>
-        </div>
+        </fieldset>
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
       <div className="col-lg-12">
@@ -185,6 +191,7 @@ export default function AppointmentForm() {
           id="appt-department"
           className="cs_form_field"
           name="department"
+          aria-label="Sélectionner un service"
         >
           <option value="gynecologie-obstetrique">
             Gynécologie obstétrique

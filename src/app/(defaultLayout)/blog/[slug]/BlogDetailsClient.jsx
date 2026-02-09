@@ -7,6 +7,7 @@ import Spacing from "@/app/ui/Spacing";
 import AuthorWidget from "@/app/ui/Widget/AuthorWidget";
 import CommentsWidget from "@/app/ui/Widget/CommentsWidget";
 import ReplyWidget from "@/app/ui/Widget/ReplyWidget";
+import { ArticleSchema } from "@/app/ui/StructuredData";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,8 +35,19 @@ export default function BlogDetailsClient({ slug }) {
 
   const relatedBlog = blogList.filter((b) => b.slug !== slug);
 
+  // Préparer les données pour ArticleSchema
+  const articleForSchema = {
+    title: article.title,
+    description: article.sections?.[0]?.text?.slice(0, 160) || article.title,
+    image: article.thumbUrl, // ArticleSchema gère l'URL complète automatiquement
+    author: article.author,
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString(),
+  };
+
   return (
     <>
+      <ArticleSchema article={articleForSchema} />
       <Section topMd={170} bottomMd={54} bottomLg={54} />
       <div className="container">
         <div className="cs_blog_details_info">
@@ -53,15 +65,30 @@ export default function BlogDetailsClient({ slug }) {
           </div>
           <div className="cs_social_links_wrap">
             <h2>Partager :</h2>
-            <div className="cs_social_links">
-              <Link href="/">
-                <Icon icon="fa-brands:facebook-f" />
+            <div className="cs_social_links" role="group" aria-label="Partager cet article">
+              <Link
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Partager ${article.title} sur Facebook`}
+              >
+                <Icon icon="fa-brands:facebook-f" aria-hidden="true" />
               </Link>
-              <Link href="/">
-                <Icon icon="fa-brands:linkedin-in" />
+              <Link
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Partager ${article.title} sur LinkedIn`}
+              >
+                <Icon icon="fa-brands:linkedin-in" aria-hidden="true" />
               </Link>
-              <Link href="/">
-                <Icon icon="fa-brands:twitter" />
+              <Link
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}&text=${encodeURIComponent(article.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Partager ${article.title} sur Twitter`}
+              >
+                <Icon icon="fa-brands:twitter" aria-hidden="true" />
               </Link>
             </div>
           </div>

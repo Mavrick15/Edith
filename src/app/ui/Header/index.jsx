@@ -42,14 +42,15 @@ export default function Header({ logoSrc, variant }) {
                 <Link className="cs_site_branding cs_site_branding_logo" href="/">
                   <Image
                     src={logoSrc}
-                    alt="Logo"
+                    alt="Edith - Centre médical Kinshasa"
                     height={55}
                     width={400}
                     className="cs_header_logo"
                     sizes="(max-width: 380px) 180px, (max-width: 575px) 220px, (max-width: 1199px) 300px, (max-width: 1400px) 330px, (max-width: 1700px) 360px, 400px"
+                    priority
                   />
                 </Link>
-                <nav className="cs_nav">
+                <nav className="cs_nav" id="main-navigation" aria-label="Navigation principale">
                   <ul
                     className={`${
                       mobileToggle ? "cs_nav_list cs_active" : "cs_nav_list"
@@ -90,16 +91,20 @@ export default function Header({ logoSrc, variant }) {
                       <Link href="/contact" onClick={closeMobileMenu}>Contact</Link>
                     </li>
                   </ul>
-                  <span
+                  <button
+                    type="button"
                     className={
                       mobileToggle
                         ? "cs_menu_toggle cs_toggle_active"
                         : "cs_menu_toggle"
                     }
                     onClick={() => setMobileToggle(!mobileToggle)}
+                    aria-label={mobileToggle ? "Fermer le menu" : "Ouvrir le menu"}
+                    aria-expanded={mobileToggle}
+                    aria-controls="main-navigation"
                   >
-                    <span></span>
-                  </span>
+                    <span aria-hidden="true"></span>
+                  </button>
                 </nav>
               </div>
               <div className="cs_main_header_right">
@@ -108,6 +113,8 @@ export default function Header({ logoSrc, variant }) {
                     className="cs_toolbox_btn cs_sidebar_toggle_btn"
                     type="button"
                     onClick={() => setSideNav(!sideNav)}
+                    aria-label={sideNav ? "Fermer le panneau latéral" : "Ouvrir le panneau latéral"}
+                    aria-expanded={sideNav}
                   >
                     <svg
                       width={35}

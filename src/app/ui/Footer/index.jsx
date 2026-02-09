@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import ContactInfoWidget from "../Widget/ContactInfoWidget";
 import MenuWidget from "../Widget/MenuWidget";
 import Newsletter from "../Widget/Newsletter";
 import SocialWidget from "../Widget/SocialWidget";
 import TextWidget from "../Widget/TextWidget";
+
 const menuDataOne = [
   { title: "À propos", href: "/about" },
   { title: "Services", href: "/services" },
@@ -12,6 +14,7 @@ const menuDataOne = [
   { title: "Galerie", href: "/gallery" },
   { title: "Témoignages", href: "/#temoignages" },
 ];
+
 const menuDataTwo = [
   { title: "Blog", href: "/blog" },
   { title: "Contact", href: "/contact" },
@@ -31,7 +34,7 @@ export default function Footer() {
           style={{ backgroundImage: "url(/images/footer_logo_bg.svg)" }}
         >
           <div className="cs_footer_brand_text cs_footer_brand_arc">
-            <svg viewBox="0 -70 300 140" className="cs_arc_svg">
+            <svg viewBox="0 -70 300 140" className="cs_arc_svg" aria-hidden="true">
               <defs>
                 <path
                   id="arcPath180"
@@ -44,6 +47,7 @@ export default function Footer() {
                 fontSize="32"
                 fontFamily="inherit"
                 fontWeight="700"
+                aria-label="Centre Médical Edith"
               >
                 <textPath
                   href="#arcPath180"
@@ -58,10 +62,12 @@ export default function Footer() {
           <div className="cs_footer_brand_icon_wrap">
             <Image
               src="/images/logo_icon.png"
-              alt="Logo Icon"
+              alt="Edith - Centre médical Kinshasa"
               className="cs_footer_brand_icon"
               height={270}
               width={250}
+              sizes="(max-width: 768px) 150px, 250px"
+              loading="lazy"
             />
           </div>
         </div>

@@ -1,10 +1,17 @@
 "use client";
 
+import { memo } from "react";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  getFacebookShareUrl,
+  getLinkedInShareUrl,
+  getTwitterShareUrl,
+  getFullUrl,
+} from "@/lib/socialShare";
 
-export default function Post({
+function Post({
   title,
   thumbUrl,
   date,
@@ -13,25 +20,45 @@ export default function Post({
   socialShare,
   variant,
 }) {
+  const fullUrl = getFullUrl(href);
+
   return (
     <div className={`cs_post cs_style_1 ${variant}`}>
       <Link href={href} className="cs_post_thumb cs_view_mouse">
-        <Image src={thumbUrl} alt={title} height={379} width={526} />
+        <Image src={thumbUrl} alt={title} height={379} width={526} loading="lazy" />
       </Link>
       <div className="cs_post_info">
         <div>
           <div className="cs_post_meta">
             <div className="cs_posted_by">{date}</div>
             {socialShare && (
-              <div className="cs_post_social">
-                <Link href="/" className="cs_center rounded-circle">
-                  <Icon icon="fa-brands:linkedin-in" />
+              <div className="cs_post_social" role="group" aria-label="Partager sur les réseaux sociaux">
+                <Link
+                  href={getLinkedInShareUrl(fullUrl, title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cs_center rounded-circle"
+                  aria-label={`Partager ${title} sur LinkedIn`}
+                >
+                  <Icon icon="fa-brands:linkedin-in" aria-hidden="true" />
                 </Link>
-                <Link href="/" className="cs_center rounded-circle">
-                  <Icon icon="fa-brands:facebook-f" />
+                <Link
+                  href={getFacebookShareUrl(fullUrl, title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cs_center rounded-circle"
+                  aria-label={`Partager ${title} sur Facebook`}
+                >
+                  <Icon icon="fa-brands:facebook-f" aria-hidden="true" />
                 </Link>
-                <Link href="/" className="cs_center rounded-circle">
-                  <Icon icon="fa-brands:twitter" />
+                <Link
+                  href={getTwitterShareUrl(fullUrl, title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cs_center rounded-circle"
+                  aria-label={`Partager ${title} sur Twitter`}
+                >
+                  <Icon icon="fa-brands:twitter" aria-hidden="true" />
                 </Link>
               </div>
             )}
@@ -51,3 +78,5 @@ export default function Post({
     </div>
   );
 }
+
+export default memo(Post);

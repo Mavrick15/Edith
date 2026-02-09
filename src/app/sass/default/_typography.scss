@@ -7,6 +7,17 @@
   --font-secondary: 'Poppins', sans-serif;
 }
 
+/* Optimisation des fonts : display swap pour éviter FOIT */
+@font-face {
+  font-family: 'Figtree';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-display: swap;
+}
+
 body,
 html {
   color: $secondary;

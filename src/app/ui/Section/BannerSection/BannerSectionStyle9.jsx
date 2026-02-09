@@ -20,7 +20,14 @@ export default function BannerSectionStyle9({
         }`}
       >
         <div className={`cs_banner_img cs_img_shift_right ${imgClassName || ""}`}>
-          <Image src={imgUrl} alt="Banner" placeholder="blur" />
+          <Image 
+            src={imgUrl} 
+            alt={title || "Bannière promotionnelle"} 
+            width={800}
+            height={600}
+            priority={false}
+            loading="lazy"
+          />
         </div>
         <div className="cs_banner_text text-start">
           <h2 className="cs_banner_title cs_fs_72">{safeParse(title)}</h2>

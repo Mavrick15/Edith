@@ -2,15 +2,49 @@
 
 import { useState } from "react";
 import ArrowIcon from "../icons/ArrowIcon";
+import { validateEmail, validateName, validateMessage } from "@/lib/formValidation";
 
 export default function ContactForm() {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  function validateField(name, value) {
+    let validation;
+    switch (name) {
+      case 'name':
+        validation = validateName(value);
+        break;
+      case 'email':
+        validation = validateEmail(value);
+        break;
+      case 'message':
+        validation = validateMessage(value);
+        break;
+      default:
+        return;
+    }
+    
+    if (!validation.valid) {
+      setErrors(prev => ({ ...prev, [name]: validation.error }));
+    } else {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  }
+
+  function handleBlur(e) {
+    validateField(e.target.name, e.target.value);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
     setStatus(null);
+    setErrors({});
+    
     const form = e.target;
     const data = {
       name: form.name.value,
@@ -18,6 +52,22 @@ export default function ContactForm() {
       subject: form.subject.value || "Contact",
       message: form.message.value,
     };
+
+    // Validation côté client
+    const nameValidation = validateName(data.name);
+    const emailValidation = validateEmail(data.email);
+    const messageValidation = validateMessage(data.message);
+
+    if (!nameValidation.valid || !emailValidation.valid || !messageValidation.valid) {
+      setErrors({
+        name: nameValidation.valid ? undefined : nameValidation.error,
+        email: emailValidation.valid ? undefined : emailValidation.error,
+        message: messageValidation.valid ? undefined : messageValidation.error,
+      });
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const res = await fetch("/api/contact", {
@@ -29,6 +79,7 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus({ type: "success", message: json.message });
         form.reset();
+        setErrors({});
       } else {
         setStatus({ type: "error", message: json.error || "Erreur" });
       }
@@ -56,10 +107,18 @@ export default function ContactForm() {
             id="contact-name"
             name="name"
             type="text"
-            className="cs_form_field"
+            className={`cs_form_field ${errors.name ? 'is-invalid' : ''}`}
             placeholder="Jean Dupont"
             required
+            onBlur={handleBlur}
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'contact-name-error' : undefined}
           />
+          {errors.name && (
+            <div id="contact-name-error" className="invalid-feedback d-block" role="alert">
+              {errors.name}
+            </div>
+          )}
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
         <div className="col-lg-6">
@@ -73,10 +132,18 @@ export default function ContactForm() {
             id="contact-email"
             name="email"
             type="email"
-            className="cs_form_field"
+            className={`cs_form_field ${errors.email ? 'is-invalid' : ''}`}
             placeholder="example@gmail.com"
             required
+            onBlur={handleBlur}
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'contact-email-error' : undefined}
           />
+          {errors.email && (
+            <div id="contact-email-error" className="invalid-feedback d-block" role="alert">
+              {errors.email}
+            </div>
+          )}
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
         <div className="col-lg-12">
@@ -107,10 +174,18 @@ export default function ContactForm() {
             name="message"
             cols={30}
             rows={10}
-            className="cs_form_field"
+            className={`cs_form_field ${errors.message ? 'is-invalid' : ''}`}
             placeholder="Écrivez votre message..."
             required
+            onBlur={handleBlur}
+            aria-invalid={errors.message ? 'true' : 'false'}
+            aria-describedby={errors.message ? 'contact-message-error' : undefined}
           />
+          {errors.message && (
+            <div id="contact-message-error" className="invalid-feedback d-block" role="alert">
+              {errors.message}
+            </div>
+          )}
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
         {status && (

@@ -6,7 +6,9 @@ export default function DefaultLayout({ children }) {
   return (
     <>
       <Header logoSrc="/images/logo.svg" variant="cs_heading_color" />
-      <PageTransition>{children}</PageTransition>
+      <main id="main-content">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
     </>
   );

@@ -36,7 +36,14 @@ export default function Hero({
             </div>
           </div>
           <div className="cs_hero_img">
-            <Image src={imgUrl} alt="Hero" placeholder="blur" />
+            <Image 
+              src={imgUrl} 
+              alt={title || "Image principale"} 
+              width={800}
+              height={800}
+              priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            />
           </div>
           <div className="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15">
             {infoList.map((item, index) => (
@@ -45,7 +52,7 @@ export default function Hero({
                   <div className="cs_hero_info_icon cs_center rounded-circle cs_accent_bg">
                     <Image
                       src={item.iconUrl}
-                      alt="Icon"
+                      alt={item.title || "Icône"}
                       height={33}
                       width={33}
                     />
@@ -62,20 +69,22 @@ export default function Hero({
               </div>
             ))}
             <div className="cs_hero_info_col">
-              <Link href={btnUrl} className="cs_btn cs_style_1">
+              <Link href={btnUrl} className="cs_btn cs_style_1" aria-label={btnText}>
                 <span>{btnText}</span>
-                <i>
+                <i aria-hidden="true">
                   <Image
                     src="/images/icons/arrow_white.svg"
-                    alt="Icon"
+                    alt=""
                     height={11}
                     width={16}
+                    aria-hidden="true"
                   />
                   <Image
                     src="/images/icons/arrow_white.svg"
-                    alt="Icon"
+                    alt=""
                     height={11}
                     width={16}
+                    aria-hidden="true"
                   />
                 </i>
               </Link>

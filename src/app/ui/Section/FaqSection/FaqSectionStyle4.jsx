@@ -3,6 +3,7 @@ import SectionHeading from '../../SectionHeading';
 import Spacing from '../../Spacing';
 import Accordion from '../../Accordion';
 import Image from 'next/image';
+import { FAQSchema } from '@/app/ui/StructuredData';
 
 export default function FaqSectionStyle4({
   data,
@@ -10,8 +11,16 @@ export default function FaqSectionStyle4({
   faqImgUrl,
   spiningImgUrl,
 }) {
+  // Transformer les données FAQ pour le schema
+  const faqsForSchema = data?.map(item => ({
+    question: item.title,
+    answer: item.content,
+  })) || [];
+
   return (
-    <div className="container">
+    <>
+      <FAQSchema faqs={faqsForSchema} />
+      <div className="container">
       <SectionHeading title={sectionTitle} />
       <Spacing md="72" lg="50" />
       <div className="row cs_gap_y_40">
@@ -41,5 +50,6 @@ export default function FaqSectionStyle4({
         </div>
       </div>
     </div>
+    </>
   );
 }

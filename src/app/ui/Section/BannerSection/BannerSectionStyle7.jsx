@@ -17,7 +17,14 @@ export default function BannerSectionStyle7({
         }}
       >
         <div className="cs_banner_img">
-          <Image src={imgUrl} alt="Banner" placeholder='blur' />
+          <Image 
+            src={imgUrl} 
+            alt={title || "Bannière promotionnelle"} 
+            width={800}
+            height={600}
+            priority={false}
+            loading="lazy"
+          />
         </div>
         <h2 className="cs_banner_title cs_fs_72">{safeParse(title)}</h2>
         <p className="cs_banner_subtitle cs_fs_20 m-0 cs_medium">

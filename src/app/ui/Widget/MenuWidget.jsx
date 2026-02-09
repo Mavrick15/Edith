@@ -9,13 +9,17 @@ export default function MenuWidget({ data, title }) {
           {title}
         </h3>
       )}
-      <ul className="cs_menu_widget cs_mp0">
-        {data?.map((item, index) => (
-          <li key={index}>
-            <Link href={item.href}>{item.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <nav aria-label={title || "Navigation"}>
+        <ul className="cs_menu_widget cs_mp0">
+          {data?.map((item, index) => (
+            <li key={index}>
+              <Link href={item.href} prefetch={true}>
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }
