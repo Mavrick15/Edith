@@ -51,8 +51,14 @@ export async function POST(request) {
     );
   } catch (error) {
     // Ne pas exposer les détails d'erreur en production
-    if (process.env.NODE_ENV === "development") {
-      console.error("Erreur API appointment:", error);
+    // Compatible Cloudflare Edge Runtime
+    try {
+      const env = typeof process !== "undefined" && process.env ? process.env.NODE_ENV : "production";
+      if (env === "development") {
+        console.error("Erreur API appointment:", error);
+      }
+    } catch (e) {
+      // Ignorer si process.env n'est pas disponible (edge runtime)
     }
     return NextResponse.json(
       { error: "Une erreur est survenue" },
