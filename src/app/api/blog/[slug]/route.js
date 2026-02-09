@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorage";
+import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorageD1";
 
 export const runtime = "edge";
 
