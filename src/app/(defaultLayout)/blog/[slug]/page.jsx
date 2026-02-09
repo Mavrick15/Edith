@@ -1,6 +1,7 @@
-import { getBlogData, getBlogArticle } from "@/lib/blogDataServer";
+import { getBlogData, getBlogArticle } from "@/lib/blogDataServerEdge";
 import BlogDetailsClient from "./BlogDetailsClient";
 
+export const runtime = "edge";
 export const dynamicParams = true;
 // Données à jour à chaque visite (articles créés via l'admin)
 export const dynamic = "force-dynamic";
