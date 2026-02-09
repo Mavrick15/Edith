@@ -5,8 +5,6 @@ import BannerSectionStyle9 from "@/app/ui/Section/BannerSection/BannerSectionSty
 import Sidebar from "@/app/ui/Sidebar";
 import Spacing from "@/app/ui/Spacing";
 import AuthorWidget from "@/app/ui/Widget/AuthorWidget";
-import CommentsWidget from "@/app/ui/Widget/CommentsWidget";
-import ReplyWidget from "@/app/ui/Widget/ReplyWidget";
 import { ArticleSchema } from "@/app/ui/StructuredData";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
@@ -135,10 +133,6 @@ export default function BlogDetailsClient({ slug }) {
               name="À propos de l'auteur"
               description="Dr. Mboloko Esimo Justin est Professeur ordinaire de gynécologie-obstétrique, expert reconnu en fertilité et procréation médicalement assistée (PMA). Plus de 30 ans d'expérience au service de la santé reproductive à Kinshasa, RDC."
             />
-            <Spacing md="110" />
-            <CommentsWidget title="Commentaires" />
-            <Spacing md="92" />
-            <ReplyWidget title="Laisser un commentaire" />
           </div>
           <div className="col-lg-4">
             <Sidebar />

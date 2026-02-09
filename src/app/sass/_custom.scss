@@ -124,6 +124,18 @@
     @media (max-width: 767px) {
       transform: translateX(-50%) translateY(20px);
     }
+    
+    /* Réduire la taille de l'image banner_img_3.png */
+    img {
+      max-width: 85% !important;
+      height: auto !important;
+      @media (max-width: 1199px) {
+        max-width: 80% !important;
+      }
+      @media (max-width: 991px) {
+        max-width: 75% !important;
+      }
+    }
   }
   .cs_banner.cs_style_9 .cs_banner_img {
     transform: translateY(40px);
@@ -132,6 +144,18 @@
     }
     @media (max-width: 991px) {
       transform: translateY(0);
+    }
+    
+    /* Réduire la taille de l'image banner_img_3.png */
+    img {
+      max-width: 85% !important;
+      height: auto !important;
+      @media (max-width: 1199px) {
+        max-width: 80% !important;
+      }
+      @media (max-width: 991px) {
+        max-width: 75% !important;
+      }
     }
   }
 }
@@ -744,3 +768,38 @@ button:focus-visible {
   font-size: 0.875em;
   color: #dc3545;
 }
+
+/* Uniformiser les dimensions des images post_1, post_2, post_3 */
+.cs_post .cs_post_thumb {
+  height: 379px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Uniformiser l'image principale dans les détails d'article */
+.cs_blog_details_info + img[src*="post_1"],
+.cs_blog_details_info + img[src*="post_2"],
+.cs_blog_details_info + img[src*="post_3"] {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  
+  @media (max-width: 991px) {
+    height: 400px;
+  }
+  @media (max-width: 767px) {
+    height: 300px;
+  }
+}
+
