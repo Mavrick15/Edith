@@ -209,6 +209,21 @@
   clip-path: polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0 100%);
   z-index: 0;
 }
+
+/* Remonter les textes dans cs_style_4 (page à propos) */
+.cs_banner.cs_style_4 .cs_banner_title,
+.cs_banner.cs_style_4 .cs_banner_subtitle {
+  transform: translateY(-60px);
+  @media (max-width: 1199px) {
+    transform: translateY(-50px);
+  }
+  @media (max-width: 991px) {
+    transform: translateY(-40px);
+  }
+  @media (max-width: 767px) {
+    transform: translateY(-30px);
+  }
+}
 .cs_hero.cs_style_1 {
   .cs_hero_img {
     height: 100%;
