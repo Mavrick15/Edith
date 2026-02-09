@@ -1,41 +1,9 @@
 import { NextResponse } from "next/server";
-import { blogArticles, blogList } from "@/lib/blogData";
-import { promises as fs } from "fs";
-import path from "path";
+import { blogArticles, blogList, loadContentArticles, saveContentArticle } from "@/lib/blogStorageEdge";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
-const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 const THUMB_OPTIONS = ["/images/blog/post_1.jpeg", "/images/blog/post_2.jpeg", "/images/blog/post_3.jpeg"];
-
-async function loadContentArticles() {
-  try {
-    const files = await fs.readdir(CONTENT_DIR);
-    const jsonFiles = files.filter((f) => f.endsWith(".json"));
-    const articles = {};
-    const list = [];
-
-    for (const file of jsonFiles) {
-      const filePath = path.join(CONTENT_DIR, file);
-      const content = await fs.readFile(filePath, "utf-8");
-      const article = JSON.parse(content);
-      articles[article.slug] = article;
-      list.push({
-        slug: article.slug,
-        title: article.title,
-        thumbUrl: article.thumbUrl,
-        date: article.date,
-        btnText: "En savoir plus",
-        href: `/blog/${article.slug}`,
-        socialShare: true,
-      });
-    }
-
-    return { articles, list };
-  } catch {
-    return { articles: {}, list: [] };
-  }
-}
 
 function slugify(text) {
   return text
@@ -49,7 +17,7 @@ function slugify(text) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { title, thumbUrl, date, author, sections } = body;
+    const { title, thumbUrl, sections } = body;
 
     if (!title || !sections?.length) {
       return NextResponse.json(
@@ -76,9 +44,13 @@ export async function POST(request) {
       sections: sections.map((s) => ({ type: s.type || "p", text: s.text || "" })),
     };
 
-    await fs.mkdir(CONTENT_DIR, { recursive: true });
-    const filePath = path.join(CONTENT_DIR, `${articleSlug}.json`);
-    await fs.writeFile(filePath, JSON.stringify(article, null, 2), "utf-8");
+    const ok = await saveContentArticle(article);
+    if (!ok) {
+      return NextResponse.json(
+        { error: "Stockage non configuré. Configurez CLOUDFLARE_KV_* pour Cloudflare Pages." },
+        { status: 503 }
+      );
+    }
 
     return NextResponse.json({ success: true, slug: articleSlug });
   } catch (error) {

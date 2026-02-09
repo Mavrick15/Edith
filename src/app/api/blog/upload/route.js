@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "images", "blog", "uploads");
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5 Mo
 
@@ -28,15 +25,14 @@ export async function POST(request) {
       return NextResponse.json({ error: "Image trop volumineuse (max 5 Mo)" }, { status: 400 });
     }
 
-    const ext = path.extname(file.name) || ".jpg";
-    const name = `blog-${Date.now()}-${Math.random().toString(36).slice(2, 8)}${ext}`;
-    await fs.mkdir(UPLOAD_DIR, { recursive: true });
-    const filePath = path.join(UPLOAD_DIR, name);
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await fs.writeFile(filePath, buffer);
-
-    const url = `/images/blog/uploads/${name}`;
-    return NextResponse.json({ url });
+    // Sur Cloudflare Pages (Edge), l'écriture fichier n'est pas disponible.
+    // Utilisez une URL d'image existante ou un service externe (Cloudinary, R2, etc.).
+    return NextResponse.json(
+      {
+        error: "Upload non disponible sur Cloudflare Pages. Utilisez une image existante (post_1.jpeg, post_2.jpeg, post_3.jpeg) ou un service externe.",
+      },
+      { status: 501 }
+    );
   } catch (error) {
     console.error("Erreur upload:", error);
     return NextResponse.json(

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import ArrowIcon from "@/app/ui/icons/ArrowIcon";
 import { parseContentToSections, sectionsToContent } from "@/lib/blogContentParser";
 
 export default function AdminBlogForm({ article, onSuccess, onCancel }) {
@@ -12,6 +13,8 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [thumbUrl, setThumbUrl] = useState("");
+  const [dragOver, setDragOver] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -26,13 +29,10 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
     }
   }, [article]);
 
-  async function handleImageUpload(e) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
+  async function uploadFile(file) {
+    if (!file?.type?.startsWith("image/")) return;
     setUploading(true);
     setError(null);
-
     try {
       const formData = new FormData();
       formData.append("image", file);
@@ -41,7 +41,6 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
         body: formData,
       });
       const json = await res.json();
-
       if (res.ok) {
         setThumbUrl(json.url);
       } else {
@@ -53,6 +52,27 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
     }
+  }
+
+  function handleImageUpload(e) {
+    const file = e.target.files?.[0];
+    if (file) uploadFile(file);
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer?.files?.[0];
+    if (file) uploadFile(file);
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+    setDragOver(true);
+  }
+
+  function handleDragLeave() {
+    setDragOver(false);
   }
 
   async function handleSubmit(e) {
@@ -104,86 +124,136 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="cs_contact_form cs_style_1 cs_white_bg cs_radius_30 p-4 shadow-sm"
+      className="admin-blog-form"
     >
-      <div className="mb-4">
-        <label className="cs_input_label cs_heading_color form-label">Image mise en avant</label>
-        <div className="d-flex justify-content-between align-items-start gap-3">
-          <div className="flex-shrink-0">
-            {thumbUrl ? (
-              <div className="position-relative rounded overflow-hidden" style={{ width: 160, height: 100 }}>
-                <Image
-                  src={thumbUrl}
-                  alt="Aperçu"
-                  fill
-                  className="object-fit-cover"
-                  unoptimized={thumbUrl.startsWith("/images/blog/uploads/")}
-                />
+      <div className="admin-blog-form_card">
+        <h3 className="admin-blog-form_sectionTitle">Image mise en avant</h3>
+        <div
+          className={`admin-blog-form_imageZone ${dragOver ? "admin-blog-form_imageZone--drag" : ""} ${thumbUrl ? "admin-blog-form_imageZone--hasImage" : ""}`}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onClick={() => !thumbUrl && fileInputRef.current?.click()}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            className="d-none"
+            onChange={handleImageUpload}
+            disabled={uploading}
+          />
+          {thumbUrl ? (
+            <div className="admin-blog-form_imagePreview">
+              <Image
+                src={thumbUrl}
+                alt="Aperçu"
+                fill
+                className="object-fit-cover"
+                unoptimized={thumbUrl.startsWith("/images/blog/uploads/")}
+              />
+              <div className="admin-blog-form_imageActions">
+                <button
+                  type="button"
+                  className="admin-blog-form_imageBtn"
+                  onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }}
+                  disabled={uploading}
+                  title="Changer l'image"
+                >
+                  Changer
+                </button>
+                <button
+                  type="button"
+                  className="admin-blog-form_imageBtn admin-blog-form_imageBtn--danger"
+                  onClick={(e) => { e.stopPropagation(); setThumbUrl(""); }}
+                  disabled={uploading}
+                  title="Supprimer l'image"
+                >
+                  Supprimer
+                </button>
               </div>
-            ) : (
-              <div
-                className="border rounded d-flex align-items-center justify-content-center bg-light"
-                style={{ width: 160, height: 100 }}
-              >
-                <span className="text-muted small">Aucune image</span>
-              </div>
-            )}
-          </div>
-          <div className="flex-grow-1">
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/gif"
-              className="form-control form-control-sm"
-              onChange={handleImageUpload}
-              disabled={uploading}
-            />
-            {uploading && <span className="small text-muted">Envoi en cours...</span>}
-          </div>
+            </div>
+          ) : (
+            <div className="admin-blog-form_imagePlaceholder">
+              {uploading ? (
+                <span className="admin-blog-form_imageText">Envoi en cours...</span>
+              ) : (
+                <>
+                  <span className="admin-blog-form_imageIcon">📷</span>
+                  <span className="admin-blog-form_imageText">Glissez une image ici ou cliquez pour sélectionner</span>
+                  <span className="admin-blog-form_imageHint">JPG, PNG, WebP ou GIF — max 5 Mo</span>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="mb-4">
-        <label className="cs_input_label cs_heading_color form-label">Titre *</label>
+      <div className="admin-blog-form_card">
+        <h3 className="admin-blog-form_sectionTitle">Titre de l'article</h3>
         <input
           type="text"
-          className="cs_form_field form-control"
+          className="admin-blog-form_input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Ex. Fertilité et alimentation : les bons réflexes"
           required
+          autoFocus={!article}
         />
       </div>
 
-      <div className="mb-4">
-        <label className="cs_input_label cs_heading_color form-label">Contenu *</label>
+      <div className="admin-blog-form_card">
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h3 className="admin-blog-form_sectionTitle mb-0">Contenu</h3>
+          <button
+            type="button"
+            className="admin-blog-form_helpBtn"
+            onClick={() => setShowHelp(!showHelp)}
+            aria-expanded={showHelp}
+          >
+            {showHelp ? "Masquer l'aide" : "Aide formatage"}
+          </button>
+        </div>
+        {showHelp && (
+          <div className="admin-blog-form_help">
+            <p className="mb-1"><code>##</code> avant un texte = sous-titre</p>
+            <p className="mb-1"><code>&gt;</code> avant un texte = citation</p>
+            <p className="mb-0">Ligne vide = nouveau paragraphe</p>
+          </div>
+        )}
         <textarea
-          className="cs_form_field form-control"
-          rows={12}
+          className="admin-blog-form_textarea"
+          rows={14}
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder={`Écrivez votre article ici. Astuces :
-- Pour un sous-titre : commencez la ligne par ##
-- Pour une citation : commencez par >
-- Sinon : écrivez normalement, séparez les paragraphes par une ligne vide`}
+          placeholder="Écrivez votre article ici..."
         />
       </div>
 
-      <div className="mb-4 small text-muted">
-        Date et auteur seront ajoutés automatiquement à la publication.
-      </div>
-
-      {error && <div className="mb-3 text-danger">{error}</div>}
-
-      <div className="d-flex gap-2">
-        <button type="submit" className="cs_btn cs_style_1" disabled={loading}>
-          <span>{loading ? "Enregistrement..." : isEdit ? "Mettre à jour" : "Publier"}</span>
-        </button>
-        {onCancel && (
-          <button type="button" className="btn btn-outline-secondary" onClick={onCancel}>
-            Annuler
-          </button>
+      <div className="admin-blog-form_footer">
+        <p className="admin-blog-form_note">
+          Date, heure et auteur sont ajoutés automatiquement.
+        </p>
+        {error && (
+          <div className="admin-blog-form_error" role="alert">
+            {error}
+          </div>
         )}
+        <div className="admin-blog-form_actions">
+          <button
+            type="submit"
+            className="cs_btn cs_style_1"
+            disabled={loading}
+          >
+            <span>{loading ? "Enregistrement..." : isEdit ? "Mettre à jour" : "Publier"}</span>
+            <ArrowIcon height={11} width={15} />
+          </button>
+          {onCancel && (
+            <button type="button" className="admin-blog-form_cancelBtn" onClick={onCancel}>
+              Annuler
+            </button>
+          )}
+        </div>
       </div>
     </form>
   );
