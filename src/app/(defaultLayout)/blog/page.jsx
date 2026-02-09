@@ -12,6 +12,9 @@ export const metadata = {
     "Articles sur la fertilité, la gynécologie et la santé reproductive. Conseils et actualités du centre médical Edith à Kinshasa.",
 };
 
+// Données à jour à chaque visite (articles créés via l'admin)
+export const dynamic = "force-dynamic";
+
 export default async function Blog() {
   const { list } = await getBlogData();
   return (

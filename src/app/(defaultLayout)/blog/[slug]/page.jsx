@@ -2,6 +2,8 @@ import { getBlogData, getBlogArticle } from "@/lib/blogDataServer";
 import BlogDetailsClient from "./BlogDetailsClient";
 
 export const dynamicParams = true;
+// Données à jour à chaque visite (articles créés via l'admin)
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const { list } = await getBlogData();
