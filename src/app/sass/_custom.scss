@@ -2,6 +2,30 @@
 .cs_site_header .cs_site_branding_logo {
   flex-shrink: 0 !important;
 }
+
+/* Mobile : logo et menu hamburger au même niveau horizontal */
+@media (max-width: 1199px) {
+  .cs_site_header .cs_main_header_left {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+  .cs_site_header .cs_nav {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .cs_site_header .cs_menu_toggle {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+  }
+  /* Slide menu : remonter un peu */
+  .cs_nav .cs_nav_list {
+    top: 100px !important;
+    height: calc(100vh - 100px) !important;
+  }
+}
 @media (max-width: 1700px) {
   .cs_site_header .cs_site_branding_logo {
     max-width: 620px !important;
