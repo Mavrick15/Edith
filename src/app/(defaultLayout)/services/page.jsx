@@ -18,10 +18,10 @@ export default function Services() {
         title="Des soins adaptés <br />à chaque étape"
         subTitle="De la conception à l'accouchement — découvrez nos services et prenez rendez-vous avec nos spécialistes."
       />
-      <Section bottomMd={140} bottomLg={100} bottomXl={60}>
+      <Section>
         <DepartmentSectionStyle3 data={serviceData} />
       </Section>
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle6
           imgUrl={bannerImg2}
           title="Votre projet parental mérite les meilleurs soins"

@@ -5,6 +5,7 @@ export const servicesData = [
     subTitle:
       "Suivi des grossesses à haut et bas risque, consultations prénatales, préparation à l'accouchement, accouchement et suites de couches. Prise en charge complète de la santé de la femme enceinte.",
     iconUrl: "/images/departments/servicices_icon_5.svg",
+    imgUrl: "/images/departments/gynécologie_obstétrique.jpeg",
     features: [
       {
         title: "Suivi des grossesses",
@@ -38,6 +39,7 @@ export const servicesData = [
     subTitle:
       "Consultations de gynécologie générale : dépistages (frottis, frottis HPV), contraception, troubles du cycle, suivi de ménopause, prévention et conseils en santé féminine.",
     iconUrl: "/images/departments/servicices_icon_8.svg",
+    imgUrl: "/images/departments/consultation_gynécologique.jpeg",
     features: [
       {
         title: "Dépistages",
@@ -71,6 +73,7 @@ export const servicesData = [
     subTitle:
       "Bilan d'infertilité du couple, FIV, insémination artificielle, don de gamètes, préservation de la fertilité. Accompagnement personnalisé dans votre projet parental.",
     iconUrl: "/images/departments/servicices_icon_1.svg",
+    imgUrl: "/images/departments/infertilite.jpeg",
     features: [
       {
         title: "Bilan d'infertilité",
@@ -104,6 +107,7 @@ export const servicesData = [
     subTitle:
       "Accompagnement personnalisé pendant la grossesse, accouchement dans des conditions optimales, suites de couches et soins au nouveau-né. Équipe dédiée pour vivre sereinement votre maternité.",
     iconUrl: "/images/departments/servicices_icon_3.svg",
+    imgUrl: "/images/departments/Maternité.jpeg",
     features: [
       {
         title: "Préparation à la naissance",
@@ -137,6 +141,7 @@ export const servicesData = [
     subTitle:
       "Soins aux nourrissons, enfants et adolescents : consultations, vaccinations, dépistages, suivi du développement et prise en charge des pathologies infantiles.",
     iconUrl: "/images/departments/servicices_icon_3.svg",
+    imgUrl: "/images/departments/pediatrie.jpeg",
     features: [
       {
         title: "Vaccinations",
@@ -170,6 +175,7 @@ export const servicesData = [
     subTitle:
       "Échographies obstétricales et gynécologiques, échographies pelviennes, doppler. Examens d'imagerie pour le diagnostic et le suivi des grossesses et pathologies féminines.",
     iconUrl: "/images/departments/servicices_icon_9.svg",
+    imgUrl: "/images/departments/Imagerie_médicale.jpeg",
     features: [
       {
         title: "Échographie obstétricale",
@@ -203,6 +209,7 @@ export const servicesData = [
     subTitle:
       "Analyses sanguines, dosages hormonaux (FSH, LH, AMH, progestérone), examens de fertilité, dépistages prénatals. Résultats rapides pour un diagnostic précis.",
     iconUrl: "/images/departments/servicices_icon_2.svg",
+    imgUrl: "/images/departments/Laboratoire_biomédical.jpeg",
     features: [
       {
         title: "Analyses sanguines",
@@ -236,6 +243,7 @@ export const servicesData = [
     subTitle:
       "Séjours courts pour accouchement, interventions chirurgicales ou surveillance. Chambres confortables, équipe soignante disponible 24h/24 pour votre tranquillité.",
     iconUrl: "/images/departments/servicices_icon_4.svg",
+    imgUrl: "/images/departments/Hospitalisation.jpeg",
     features: [
       {
         title: "Chambres confortables",
@@ -269,6 +277,7 @@ export const servicesData = [
     subTitle:
       "Chirurgie gynécologique et obstétricale : césariennes, interventions pour fibromes, kystes ovariens, endométriose, réparations périnéales. Bloc opératoire équipé et équipe expérimentée.",
     iconUrl: "/images/departments/servicices_icon_6.svg",
+    imgUrl: "/images/departments/department_img_1.png",
     features: [
       {
         title: "Césariennes",

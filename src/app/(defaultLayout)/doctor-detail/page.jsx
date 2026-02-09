@@ -91,9 +91,6 @@ export default function DoctorDetail() {
         />
       </Section>
       <Section
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}
         className="cs_doctor_detail_appointment"
       >
         <AppointmentSectionStyle2

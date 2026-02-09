@@ -25,9 +25,6 @@ export default function Blog() {
         topMd={170}
         topLg={150}
         topXl={110}
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}
       >
         <BlogSectionStyle2
           data={blogList}
@@ -35,7 +32,7 @@ export default function Blog() {
           sectionTitle="Dernières actualités"
         />
       </Section>
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle9
           title="Votre projet parental mérite <br />les meilleurs soins"
           subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes dès aujourd'hui."

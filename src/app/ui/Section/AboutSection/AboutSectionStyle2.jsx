@@ -16,7 +16,7 @@ export default function AboutSectionStyle2({ title, subTitle, imgUrl }) {
             </div>
           </div>
           <div className="col-lg-7 offset-lg-1">
-            <Image src={imgUrl} alt={title} placeholder='blur' />
+            <Image src={imgUrl} alt={title} width={791} height={644} className="w-100 h-auto cs_radius_20" />
           </div>
         </div>
       </div>

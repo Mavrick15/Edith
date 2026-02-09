@@ -156,9 +156,6 @@ export default function About() {
         topMd={190}
         topLg={145}
         topXl={105}
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}
       >
         <AwardSectionStyle2
           sectionTitle="Prix et distinctions <br />remportés"
@@ -167,7 +164,7 @@ export default function About() {
           data={awardData}
         />
       </Section>
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle4
           bgUrl="/images/about/banner_bg_2.png"
           title="Faites le premier pas — prenez rendez-vous"

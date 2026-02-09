@@ -128,8 +128,7 @@ export default function BlogDetailsClient({ slug }) {
           ))}
         </div>
       </div>
-      <Spacing md="200" xl="150" lg="110" />
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle9
           title="Votre projet parental mérite les meilleurs soins"
           subTitle="Faites le premier pas — prenez rendez-vous avec nos spécialistes <br />dès aujourd'hui."

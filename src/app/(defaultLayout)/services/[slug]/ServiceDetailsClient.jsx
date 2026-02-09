@@ -10,7 +10,6 @@ import { getServiceBySlug } from "@/lib/servicesData";
 import { notFound, useParams } from "next/navigation";
 
 import bannerImg from "../../../../../public/images/departments/banner_img_3.png";
-import aboutImg from "../../../../../public/images/departments/department_img_1.png";
 import appointmentImg from "../../../../../public/images/home_1/appointment.png";
 
 const doctorData = [
@@ -98,7 +97,7 @@ export default function ServiceDetailsClient() {
         <AboutSectionStyle2
           title={`Service de ${service.title.toLowerCase()}`}
           subTitle={service.subTitle}
-          imgUrl={aboutImg}
+          imgUrl={service.imgUrl || "/images/departments/department_img_1.png"}
         />
       </Section>
 
@@ -118,9 +117,6 @@ export default function ServiceDetailsClient() {
         topMd={190}
         topLg={145}
         topXl={105}
-        bottomMd={190}
-        bottomLg={145}
-        bottomXl={110}
         id="appointment"
       >
         <AppointmentSection
@@ -130,7 +126,7 @@ export default function ServiceDetailsClient() {
         />
       </Section>
 
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle7
           imgUrl={bannerImg}
           bgUrl="/images/departments/banner_bg_3.svg"

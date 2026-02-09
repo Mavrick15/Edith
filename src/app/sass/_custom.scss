@@ -60,6 +60,13 @@
   overflow: visible !important;
   .container {
     overflow: visible !important;
+    transform: translateY(300px);
+    @media (max-width: 1199px) {
+      transform: translateY(220px);
+    }
+    @media (max-width: 767px) {
+      transform: translateY(150px);
+    }
   }
 }
 .cs_banner.cs_style_9.cs_doctor_detail_banner {
@@ -94,6 +101,29 @@
   transform: translateY(-80px);
   @media (max-width: 1199px) {
     transform: translateY(-40px);
+  }
+}
+/* Pages avec banners : créer débordement container vers le bas */
+.cs_service_banner_wrap {
+  overflow: visible !important;
+  .container {
+    overflow: visible !important;
+    transform: translateY(300px);
+    @media (max-width: 1199px) {
+      transform: translateY(220px);
+    }
+    @media (max-width: 767px) {
+      transform: translateY(150px);
+    }
+  }
+  .cs_banner.cs_style_7 .cs_banner_img {
+    transform: translateX(-50%) translateY(-40px);
+    @media (max-width: 1199px) {
+      transform: translateX(-50%) translateY(-30px);
+    }
+    @media (max-width: 767px) {
+      transform: translateX(-50%) translateY(-20px);
+    }
   }
 }
 .cs_video_open {

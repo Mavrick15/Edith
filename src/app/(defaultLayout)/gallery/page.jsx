@@ -25,9 +25,6 @@ export default function Gallery() {
         topMd={170}
         topLg={150}
         topXl={110}
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}
       >
         <GallerySectionStyle2
           data={getGalleryPageData()}
@@ -35,7 +32,7 @@ export default function Gallery() {
           sectionTitle="Nos installations et dernières activités"
         />
       </Section>
-      <Section className="cs_footer_margin_0">
+      <Section className="cs_footer_margin_0 cs_service_banner_wrap">
         <BannerSectionStyle9
           title="Prenez rendez-vous et venez nous rencontrer"
           subTitle="Votre projet parental mérite les meilleurs soins — nos spécialistes vous attendent."
