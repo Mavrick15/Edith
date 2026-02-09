@@ -13,7 +13,7 @@ function slugify(text) {
 }
 
 export async function GET(request, { params }) {
-  const slug = params?.slug;
+  const { slug } = await params;
   if (!slug) return NextResponse.json({ error: "Slug requis" }, { status: 400 });
   const contentArticle = await getContentArticle(slug);
   const staticArticle = blogArticles[slug];
@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
-    const currentSlug = params?.slug;
+    const { slug: currentSlug } = await params;
     const body = await request.json();
     const { slug, title, thumbUrl, sections } = body;
 
@@ -77,7 +77,7 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
   try {
-    const slug = params?.slug;
+    const { slug } = await params;
     if (!slug) return NextResponse.json({ error: "Slug requis" }, { status: 400 });
 
     const contentArticle = await getContentArticle(slug);
