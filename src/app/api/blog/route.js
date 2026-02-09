@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { blogArticles, blogList, loadContentArticles, saveContentArticle } from "@/lib/blogStorageEdge";
+import { blogArticles, blogList, loadContentArticles, saveContentArticle } from "@/lib/blogStorage";
 
 export const runtime = "edge";
 
@@ -44,14 +44,7 @@ export async function POST(request) {
       sections: sections.map((s) => ({ type: s.type || "p", text: s.text || "" })),
     };
 
-    const ok = await saveContentArticle(article);
-    if (!ok) {
-      return NextResponse.json(
-        { error: "Stockage non configuré. Configurez CLOUDFLARE_KV_* pour Cloudflare Pages." },
-        { status: 503 }
-      );
-    }
-
+    await saveContentArticle(article);
     return NextResponse.json({ success: true, slug: articleSlug });
   } catch (error) {
     console.error("Erreur création article:", error);

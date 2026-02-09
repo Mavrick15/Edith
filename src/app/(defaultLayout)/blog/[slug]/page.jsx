@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
 
 export async function generateMetadata({ params }) {
-  const slug = params?.slug;
+  const { slug } = await params;
   const article = slug ? await getBlogArticle(slug) : null;
   if (!article) return {};
   
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailsPage({ params }) {
-  const slug = params?.slug;
+  const { slug } = await params;
   const article = slug ? await getBlogArticle(slug) : null;
   const { list } = await getBlogData();
   return <BlogDetailsClient slug={slug} article={article} blogList={list} />;

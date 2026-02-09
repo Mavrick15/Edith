@@ -1,6 +1,6 @@
 /**
  * Utilitaires serveur pour fusionner les articles statiques et dynamiques du blog.
- * Compatible Edge (Cloudflare) et Node.js.
+ * D1 (Cloudflare) si configuré, sinon fichiers (content/blog/*.json).
  */
 import { blogArticles, blogList, loadContentArticles } from "./blogStorage";
 

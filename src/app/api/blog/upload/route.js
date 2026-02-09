@@ -25,12 +25,9 @@ export async function POST(request) {
       return NextResponse.json({ error: "Image trop volumineuse (max 5 Mo)" }, { status: 400 });
     }
 
-    // Sur Cloudflare Pages (Edge), l'écriture fichier n'est pas disponible.
-    // Utilisez une URL d'image existante ou un service externe (Cloudinary, R2, etc.).
+    // Sur Cloudflare (Edge), pas d'écriture fichier : utiliser images par défaut ou R2 plus tard
     return NextResponse.json(
-      {
-        error: "Upload non disponible sur Cloudflare Pages. Utilisez une image existante (post_1.jpeg, post_2.jpeg, post_3.jpeg) ou un service externe.",
-      },
+      { error: "Upload non disponible sur Cloudflare. Utilisez les images par défaut (post_1.jpeg, post_2.jpeg, post_3.jpeg)." },
       { status: 501 }
     );
   } catch (error) {

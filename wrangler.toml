@@ -3,14 +3,13 @@ compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# Variables pour le blog admin (Cloudflare KV)
-# À remplir : votre Account ID et l'ID du namespace KV (voir CLOUDFLARE_SETUP.md)
+# D1 : remplacer par vos valeurs (voir CLOUDFLARE_SETUP.md)
+# Token API : ne pas mettre en clair ici → utiliser "wrangler secret put CLOUDFLARE_API_TOKEN"
 [vars]
 CLOUDFLARE_ACCOUNT_ID = "777ec3364551bfb4fa3a5b54982affa3"
-CLOUDFLARE_KV_NAMESPACE_ID = "d08e43cfd0b24a54b77e187202738445"
+CLOUDFLARE_D1_DATABASE_ID = "1e779961-6b12-4df6-b722-280522403252"
 
-# Namespace KV pour le blog (créer avec : pnpm wrangler kv:namespace create BLOG)
-# Renseigner l'id après création
-[[kv_namespaces]]
-binding = "BLOG_KV"
-id = "d08e43cfd0b24a54b77e187202738445"
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "edith-blog"
+# database_id = "1e779961-6b12-4df6-b722-280522403252"

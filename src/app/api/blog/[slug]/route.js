@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorageEdge";
+import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorage";
 
 export const runtime = "edge";
 
@@ -53,14 +53,7 @@ export async function PUT(request, { params }) {
       sections: sections.map((s) => ({ type: s.type || "p", text: s.text || "" })),
     };
 
-    const ok = await saveContentArticle(article);
-    if (!ok) {
-      return NextResponse.json(
-        { error: "Stockage non configuré. Configurez CLOUDFLARE_KV_* pour Cloudflare Pages." },
-        { status: 503 }
-      );
-    }
-
+    await saveContentArticle(article);
     if (currentSlug && currentSlug !== articleSlug) {
       await deleteContentArticle(currentSlug);
     }
@@ -88,13 +81,7 @@ export async function DELETE(request, { params }) {
       );
     }
 
-    const ok = await deleteContentArticle(slug);
-    if (!ok) {
-      return NextResponse.json(
-        { error: "Erreur lors de la suppression" },
-        { status: 500 }
-      );
-    }
+    await deleteContentArticle(slug);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Erreur suppression article:", error);
