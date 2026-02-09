@@ -117,12 +117,21 @@
     }
   }
   .cs_banner.cs_style_7 .cs_banner_img {
-    transform: translateX(-50%) translateY(-40px);
+    transform: translateX(-50%) translateY(-80px);
     @media (max-width: 1199px) {
-      transform: translateX(-50%) translateY(-30px);
+      transform: translateX(-50%) translateY(-60px);
     }
     @media (max-width: 767px) {
-      transform: translateX(-50%) translateY(-20px);
+      transform: translateX(-50%) translateY(-40px);
+    }
+  }
+  .cs_banner.cs_style_9 .cs_banner_img {
+    transform: translateY(-60px);
+    @media (max-width: 1199px) {
+      transform: translateY(-40px);
+    }
+    @media (max-width: 991px) {
+      transform: translateY(0);
     }
   }
 }
