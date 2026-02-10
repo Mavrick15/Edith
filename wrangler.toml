@@ -3,13 +3,19 @@ compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-# D1 : remplacer par vos valeurs (voir CLOUDFLARE_SETUP.md)
-# Token API : ne pas mettre en clair ici → utiliser "wrangler secret put CLOUDFLARE_API_TOKEN"
+# Variables (remplacer par vos valeurs). Secrets : wrangler secret put SUPABASE_SERVICE_ROLE_KEY et CLOUDFLARE_API_TOKEN
 [vars]
-CLOUDFLARE_ACCOUNT_ID = "777ec3364551bfb4fa3a5b54982affa3"
-CLOUDFLARE_D1_DATABASE_ID = "1e779961-6b12-4df6-b722-280522403252"
+# Site
+NEXT_PUBLIC_SITE_URL = ""
+
+# Supabase — blog (prioritaire si défini, voir SUPABASE_SETUP.md)
+NEXT_PUBLIC_SUPABASE_URL = "https://qcppyjtwnfoyxnidupev.supabase.co"
+
+# D1 — blog si Supabase non utilisé (voir CLOUDFLARE_SETUP.md)
+CLOUDFLARE_ACCOUNT_ID = ""
+CLOUDFLARE_D1_DATABASE_ID = ""
 
 # [[d1_databases]]
 # binding = "DB"
 # database_name = "edith-blog"
-# database_id = "1e779961-6b12-4df6-b722-280522403252"
+# database_id = "MY_D1_DATABASE_ID"
