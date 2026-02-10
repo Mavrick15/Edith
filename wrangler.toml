@@ -11,11 +11,3 @@ NEXT_PUBLIC_SITE_URL = ""
 # Supabase — blog (prioritaire si défini, voir SUPABASE_SETUP.md)
 NEXT_PUBLIC_SUPABASE_URL = "https://qcppyjtwnfoyxnidupev.supabase.co"
 
-# D1 — blog si Supabase non utilisé (voir CLOUDFLARE_SETUP.md)
-CLOUDFLARE_ACCOUNT_ID = ""
-CLOUDFLARE_D1_DATABASE_ID = ""
-
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "edith-blog"
-# database_id = "MY_D1_DATABASE_ID"
