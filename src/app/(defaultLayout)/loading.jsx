@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="cs_perloader" role="status" aria-live="polite" aria-label="Chargement en cours">
+    <div className="cs_perloader cs_loading_page" role="status" aria-live="polite" aria-label="Chargement en cours">
       <div className="cs_perloader_content">
         <div className="cs_perloader_in">
           <div className="cs_wave_first">
@@ -27,6 +27,7 @@ export default function Loading() {
             </svg>
           </div>
         </div>
+        <p className="cs_perloader_text">Chargement…</p>
       </div>
       <span className="sr-only">Chargement de la page en cours...</span>
     </div>

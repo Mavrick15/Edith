@@ -64,7 +64,16 @@ export async function PUT(request, { params }) {
       await deleteContentArticle(currentSlug);
     }
 
-    return NextResponse.json({ success: true, slug: articleSlug });
+    const listItem = {
+      slug: article.slug,
+      title: article.title,
+      thumbUrl: article.thumbUrl,
+      date: article.date,
+      btnText: "En savoir plus",
+      href: `/blog/${article.slug}`,
+      socialShare: true,
+    };
+    return NextResponse.json({ success: true, slug: articleSlug, article, listItem });
   } catch (error) {
     console.error("Erreur sauvegarde article:", error);
     return NextResponse.json(

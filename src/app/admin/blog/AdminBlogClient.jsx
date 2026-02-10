@@ -13,7 +13,10 @@ export default function AdminBlogClient({ initialArticles, initialArticlesMap })
   const [error, setError] = useState(null);
 
   async function refreshArticles() {
-    const res = await fetch("/api/blog");
+    const res = await fetch("/api/blog", {
+      cache: "no-store",
+      headers: { "Cache-Control": "no-cache", Pragma: "no-cache" },
+    });
     if (res.ok) {
       const data = await res.json();
       setArticles(data.list);
@@ -21,9 +24,27 @@ export default function AdminBlogClient({ initialArticles, initialArticlesMap })
     }
   }
 
-  function handleSuccess() {
+  function handleSuccess(slug, listItem, fullArticle, isEdit, previousSlug) {
     setShowForm(false);
     setEditingSlug(null);
+    if (slug && listItem) {
+      setArticles((prev) => {
+        let next = isEdit
+          ? prev.map((a) => (a.slug === listItem.slug ? listItem : a))
+          : [listItem, ...prev.filter((a) => a.slug !== listItem.slug)];
+        if (isEdit && previousSlug && previousSlug !== listItem.slug) {
+          next = [listItem, ...next.filter((a) => a.slug !== previousSlug)];
+        }
+        return next.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      });
+      if (fullArticle) {
+        setArticlesMap((prev) => {
+          const next = { ...prev, [fullArticle.slug]: fullArticle };
+          if (previousSlug && previousSlug !== fullArticle.slug) delete next[previousSlug];
+          return next;
+        });
+      }
+    }
     refreshArticles();
   }
 

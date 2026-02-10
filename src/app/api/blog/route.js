@@ -51,7 +51,16 @@ export async function POST(request) {
         { status: 503 }
       );
     }
-    return NextResponse.json({ success: true, slug: articleSlug });
+    const listItem = {
+      slug: article.slug,
+      title: article.title,
+      thumbUrl: article.thumbUrl,
+      date: article.date,
+      btnText: "En savoir plus",
+      href: `/blog/${article.slug}`,
+      socialShare: true,
+    };
+    return NextResponse.json({ success: true, slug: articleSlug, article, listItem });
   } catch (error) {
     console.error("Erreur création article:", error);
     return NextResponse.json(
@@ -73,10 +82,12 @@ export async function GET() {
     });
     mergedList.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       articles: mergedArticles,
       list: mergedList,
     });
+    res.headers.set("Cache-Control", "private, no-store, max-age=0");
+    return res;
   } catch (error) {
     return NextResponse.json(
       { error: "Erreur lors du chargement des articles" },

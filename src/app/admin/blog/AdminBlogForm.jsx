@@ -110,7 +110,7 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
       const json = await res.json();
 
       if (res.ok) {
-        onSuccess?.(json.slug);
+        onSuccess?.(json.slug, json.listItem, json.article, isEdit, isEdit ? article?.slug : null);
       } else {
         setError(json.error || "Erreur lors de la sauvegarde.");
       }
