@@ -47,3 +47,9 @@ Sur Cloudflare (runtime Edge), l’upload vers le disque n’est pas disponible.
 
 - **Sans** variables D1 : lecture/écriture dans `content/blog/*.json` (Node).
 - **Avec** les mêmes variables D1 : utilisation de D1 (pratique pour tester avant déploiement).
+
+## 6. Dépannage — « rien ne s'enregistre »
+
+- Vérifiez que les **trois** variables sont bien définies pour l’environnement **Production** (Pages → projet → Settings → Environment variables).
+- Vérifiez que la table **blog_articles** existe (voir § 2) et que le token API a la permission **D1 Edit**.
+- Lorsque l’enregistrement échoue, l’admin affiche maintenant un message d’erreur explicite (ex. « Impossible d'enregistrer (vérifiez la config D1…) »).

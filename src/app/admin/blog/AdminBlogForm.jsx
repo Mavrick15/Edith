@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import ArrowIcon from "@/app/ui/icons/ArrowIcon";
 import { parseContentToSections, sectionsToContent } from "@/lib/blogContentParser";
+import { getBlogApiBase } from "@/lib/blogApiBase";
 
 export default function AdminBlogForm({ article, onSuccess, onCancel }) {
   const isEdit = !!article;
@@ -36,7 +37,8 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
     try {
       const formData = new FormData();
       formData.append("image", file);
-      const res = await fetch("/api/blog/upload", {
+      const uploadUrl = getBlogApiBase() ? `${getBlogApiBase()}/upload` : "/api/blog/upload";
+      const res = await fetch(uploadUrl, {
         method: "POST",
         body: formData,
       });
@@ -93,7 +95,10 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
     }
 
     try {
-      const url = isEdit ? `/api/blog/${article.slug}` : "/api/blog";
+      const base = getBlogApiBase();
+      const url = base
+        ? (isEdit ? `${base}/articles/${article.slug}` : `${base}/articles`)
+        : (isEdit ? `/api/blog/${article.slug}` : "/api/blog");
       const method = isEdit ? "PUT" : "POST";
       const body = {
         title: title.trim(),

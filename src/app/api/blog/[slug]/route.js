@@ -53,7 +53,13 @@ export async function PUT(request, { params }) {
       sections: sections.map((s) => ({ type: s.type || "p", text: s.text || "" })),
     };
 
-    await saveContentArticle(article);
+    const saved = await saveContentArticle(article);
+    if (!saved) {
+      return NextResponse.json(
+        { error: "Impossible d'enregistrer (vérifiez la config D1 et que la table blog_articles existe)" },
+        { status: 503 }
+      );
+    }
     if (currentSlug && currentSlug !== articleSlug) {
       await deleteContentArticle(currentSlug);
     }
@@ -81,7 +87,13 @@ export async function DELETE(request, { params }) {
       );
     }
 
-    await deleteContentArticle(slug);
+    const deleted = await deleteContentArticle(slug);
+    if (!deleted) {
+      return NextResponse.json(
+        { error: "Impossible de supprimer (vérifiez la config D1)" },
+        { status: 503 }
+      );
+    }
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Erreur suppression article:", error);

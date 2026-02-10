@@ -16,7 +16,7 @@ function getD1Config() {
 
 async function d1Query(sql, params = []) {
   const cfg = getD1Config();
-  if (!cfg) return { success: false, result: [] };
+  if (!cfg) return { success: false, result: [], error: "D1 non configuré (variables d'environnement manquantes)" };
   const url = `${API_BASE}/accounts/${cfg.accountId}/d1/database/${cfg.databaseId}/query`;
   const res = await fetch(url, {
     method: "POST",
@@ -27,7 +27,10 @@ async function d1Query(sql, params = []) {
     body: JSON.stringify({ sql, params }),
   });
   const data = await res.json();
-  if (!res.ok || !data.success) return { success: false, result: [] };
+  if (!res.ok || !data.success) {
+    const msg = data.errors?.[0]?.message || data.error || `HTTP ${res.status}`;
+    return { success: false, result: [], error: msg };
+  }
   const first = data.result?.[0];
   return { success: true, result: first?.results ?? [], meta: first?.meta };
 }

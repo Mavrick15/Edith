@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import AdminBlogForm from "./AdminBlogForm";
+import { getBlogApiBase } from "@/lib/blogApiBase";
 
 export default function AdminBlogClient({ initialArticles, initialArticlesMap }) {
   const [articles, setArticles] = useState(initialArticles);
@@ -13,7 +14,8 @@ export default function AdminBlogClient({ initialArticles, initialArticlesMap })
   const [error, setError] = useState(null);
 
   async function refreshArticles() {
-    const res = await fetch("/api/blog");
+    const url = getBlogApiBase() ? `${getBlogApiBase()}/articles` : "/api/blog";
+    const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
       setArticles(data.list);
@@ -47,7 +49,8 @@ export default function AdminBlogClient({ initialArticles, initialArticlesMap })
     setDeletingSlug(slug);
     setError(null);
     try {
-      const res = await fetch(`/api/blog/${slug}`, { method: "DELETE" });
+      const url = getBlogApiBase() ? `${getBlogApiBase()}/articles/${slug}` : `/api/blog/${slug}`;
+      const res = await fetch(url, { method: "DELETE" });
       const json = await res.json();
       if (res.ok) {
         if (editingSlug === slug) {
