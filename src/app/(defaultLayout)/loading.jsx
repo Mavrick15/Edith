@@ -27,9 +27,8 @@ export default function Loading() {
             </svg>
           </div>
         </div>
-        <p className="cs_perloader_text">Chargement…</p>
+        <p className="cs_perloader_text">Chargement de la page en cours...</p>
       </div>
-      <span className="sr-only">Chargement de la page en cours...</span>
     </div>
   );
 }
