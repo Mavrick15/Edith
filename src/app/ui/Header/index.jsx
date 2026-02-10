@@ -43,10 +43,10 @@ export default function Header({ logoSrc, variant }) {
                   <Image
                     src={logoSrc}
                     alt="Edith - Centre médical Kinshasa"
-                    height={55}
-                    width={400}
+                    height={72}
+                    width={280}
                     className="cs_header_logo"
-                    sizes="(max-width: 380px) 180px, (max-width: 575px) 220px, (max-width: 1199px) 300px, (max-width: 1400px) 330px, (max-width: 1700px) 360px, 400px"
+                    sizes="(max-width: 380px) 220px, (max-width: 575px) 260px, (max-width: 1199px) 320px, (max-width: 1400px) 340px, (max-width: 1700px) 380px, 420px"
                     priority
                   />
                 </Link>
@@ -179,7 +179,7 @@ export default function Header({ logoSrc, variant }) {
           <Spacing md="30" lg="30" xl="30" />
           <IconBoxStyle11
             title="E-mail"
-            subTitle="contact@edith.org"
+            subTitle="contact@cmedith.com"
             iconSrc="/images/contact/icon_2.svg"
           />
           <Spacing md="30" lg="30" xl="30" />

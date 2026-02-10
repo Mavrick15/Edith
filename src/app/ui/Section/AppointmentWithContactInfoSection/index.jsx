@@ -5,7 +5,7 @@ import appointmentImg from "../../../../../public/images/appointments/appointmen
 
 const contactInfo = [
   { title: "Téléphone", subTitle: "+243 999 952 335" },
-  { title: "E-mail", subTitle: "contact@edith.org" },
+  { title: "E-mail", subTitle: "contact@cmedith.com" },
   {
     title: "Clinique Lemba Foire",
     subTitle: "Avenue Labue n°13, Lemba Foire, Kinshasa",

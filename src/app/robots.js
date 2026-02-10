@@ -1,5 +1,5 @@
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
 export default function robots() {
   return {

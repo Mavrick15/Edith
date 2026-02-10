@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -21,7 +21,9 @@ export async function generateMetadata({ params }) {
   if (!article) return {};
   
   const description = article.sections?.[0]?.text?.slice(0, 160) || article.title;
-  const imageUrl = `${siteUrl}${article.thumbUrl}`;
+  const imageUrl = article.thumbUrl?.startsWith("http")
+    ? article.thumbUrl
+    : `${siteUrl}${article.thumbUrl || ""}`;
   const pageUrl = `${siteUrl}/blog/${slug}`;
 
   return {

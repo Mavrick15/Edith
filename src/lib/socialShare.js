@@ -3,7 +3,7 @@
  * Génère les URLs de partage pour les réseaux sociaux
  */
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
 /**
  * Génère l'URL de partage Facebook

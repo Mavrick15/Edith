@@ -44,8 +44,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 140px;
-    min-height: 140px;
+    height: 100px;
+    min-height: 100px;
     position: relative;
   }
   .cs_main_header_right {
@@ -286,7 +286,7 @@
   transition: all 0.4s ease;
   background-color: #fff;
   .cs_main_header_in {
-    height: 90px;
+    height: 72px;
   }
   &.cs_white_color {
     background-color: $primary;
@@ -306,8 +306,8 @@
 .cs_site_branding_logo {
   display: flex;
   align-items: center;
-  max-width: 700px;
-  height: 110px;
+  max-width: 420px;
+  height: 72px;
   overflow: hidden;
   /* Next.js Image wrapper + img */
   span,
@@ -316,43 +316,43 @@
     width: auto !important;
     height: auto !important;
     max-width: 100% !important;
-    max-height: 110px !important;
+    max-height: 72px !important;
     object-fit: contain;
   }
   /* Desktop : logo s'adapte selon la largeur d'écran */
   @media (max-width: 1700px) {
-    max-width: 620px;
-    height: 98px;
+    max-width: 380px;
+    height: 66px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 98px !important;
+      max-height: 66px !important;
     }
   }
   @media (max-width: 1400px) {
-    max-width: 560px;
-    height: 88px;
+    max-width: 340px;
+    height: 60px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 88px !important;
+      max-height: 60px !important;
     }
   }
   @media (max-width: 1199px) {
-    max-width: 490px;
-    height: 98px;
+    max-width: 320px;
+    height: 70px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 98px !important;
+      max-height: 70px !important;
     }
   }
   @media (max-width: 575px) {
-    max-width: 350px;
-    height: 95px;
+    max-width: 260px;
+    height: 62px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 95px !important;
+      max-height: 62px !important;
     }
   }
   @media (max-width: 380px) {
-    max-width: 280px;
-    height: 88px;
+    max-width: 220px;
+    height: 56px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 88px !important;
+      max-height: 56px !important;
     }
   }
 }
@@ -396,7 +396,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px 124px;
+      gap: 20px 56px;
     }
   }
 
@@ -412,7 +412,7 @@
       height: inherit;
 
       > li {
-        margin-right: 50px;
+        margin-right: 32px;
         height: inherit;
 
         &:last-child {
@@ -679,9 +679,9 @@
       background-color: #fff;
       color: $primary;
       padding: 10px 0;
-      top: 110px;
+      top: 100px;
       overflow: auto;
-      height: calc(100vh - 110px);
+      height: calc(100vh - 100px);
       line-height: 1.6em;
       transition: all 0.4s ease;
       &.cs_active {
@@ -789,7 +789,7 @@
   }
 
   .cs_site_header.cs_style1 .cs_main_header_in {
-    height: 110px;
+    height: 90px;
   }
 
   .cs_site_header .current-menu-item > a:before {

@@ -3,7 +3,7 @@ import Preloader from "./ui/Preloader";
 import WebVitals from "./ui/WebVitals";
 import { OrganizationSchema, MedicalBusinessSchema } from "./ui/StructuredData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
 export const viewport = {
   width: "device-width",

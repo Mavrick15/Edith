@@ -33,8 +33,8 @@ export default function ContactInfoWidget() {
         <i className="cs_accent_bg">
           <Icon icon="bi:envelope" />
         </i>
-        <Link href="mailto:contact@edith.org" className="text-decoration-none">
-          contact@edith.org
+        <Link href="mailto:contact@cmedith.com" className="text-decoration-none">
+          contact@cmedith.com
         </Link>
       </li>
     </ul>

@@ -28,7 +28,7 @@ export default function DoctorDetail() {
             { iconUrl: "/images/icons/call.svg", title: "+243 999 952 335" },
             {
               iconUrl: "/images/icons/envlope.svg",
-              title: "Jmboloko@edith.org",
+              title: "Jmboloko@cmedith.com",
             },
           ]}
           contactInfoHeading="Coordonnées"

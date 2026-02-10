@@ -17,7 +17,7 @@ export default function ContactInfoSection({ sectionTitle }) {
         <div className="col-xl-4">
           <IconBoxStyle11
             title="E-mail"
-            subTitle="contact@edith.org"
+            subTitle="contact@cmedith.com"
             iconSrc="/images/contact/icon_2.svg"
           />
         </div>

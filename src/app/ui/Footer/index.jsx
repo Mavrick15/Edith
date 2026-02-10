@@ -5,7 +5,6 @@ import ContactInfoWidget from "../Widget/ContactInfoWidget";
 import MenuWidget from "../Widget/MenuWidget";
 import Newsletter from "../Widget/Newsletter";
 import SocialWidget from "../Widget/SocialWidget";
-import TextWidget from "../Widget/TextWidget";
 
 const menuDataOne = [
   { title: "À propos", href: "/about" },
@@ -77,7 +76,16 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-4">
               <div className="cs_footer_item">
-                <TextWidget text="Centre médical spécialisé en gynécologie-obstétrique, fertilité et PMA à Kinshasa. Votre santé, notre priorité." />
+                <Link href="/" className="d-inline-block mb-4" aria-label="Edith - Accueil">
+                  <Image
+                    src="/images/logo.svg"
+                    alt="Edith - Centre médical Kinshasa"
+                    width={220}
+                    height={56}
+                    className="cs_footer_logo_img"
+                    style={{ maxWidth: "100%", height: "auto" }}
+                  />
+                </Link>
                 <ContactInfoWidget />
               </div>
             </div>

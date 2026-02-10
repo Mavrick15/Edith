@@ -7,7 +7,7 @@ export function generateStaticParams() {
   }));
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://edith-medical.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
 export function generateMetadata({ params }) {
   const slug = params?.slug;
