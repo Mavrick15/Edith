@@ -52,3 +52,18 @@ Si le bucket n’existe pas, l’upload renverra une erreur ; vous pouvez contin
 ## 5. En local
 
 Avec les deux variables Supabase dans `.env.local`, le blog et l’admin utilisent Supabase. Sans elles, le stockage reste par fichiers (Node).
+
+## 6. Importer les 3 articles statiques dans la base
+
+Pour copier les 3 articles (infertilité, PMA/FIV, consultation gynécologique) dans la table `blog_articles` :
+
+1. Démarrez l'app (`pnpm run dev`).
+2. Envoyez une requête **POST** vers l'API de seed :
+   ```bash
+   curl -X POST http://localhost:3000/api/blog/seed
+   ```
+   En production, remplacez par l'URL de votre site (ex. `https://www.cmedith.com/api/blog/seed`).
+
+3. Réponse attendue : `{ "success": true, "message": "3 article(s) inséré(s) dans la base.", "inserted": ["infertilite-couple", "pma-fiv-kinshasa", "consultation-gynecologique"] }`.
+
+Après le seed, ces articles sont lus depuis Supabase. Les données statiques dans `src/lib/blogData.js` servent de fallback si la base est vide.
