@@ -1,8 +1,11 @@
 /**
- * Stockage blog : D1 (Cloudflare) en Edge ou si configuré, sinon fichiers (Node).
+ * Stockage blog (Node) : Supabase si configuré, sinon D1 si configuré, sinon fichiers.
  */
-function isEdgeRuntime() {
-  return typeof globalThis.EdgeRuntime === "string" || (typeof process !== "undefined" && process.env?.NEXT_RUNTIME === "edge");
+function useSupabase() {
+  return !!(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
 }
 function getD1Config() {
   return !!(
@@ -13,7 +16,11 @@ function getD1Config() {
 }
 
 export async function loadContentArticles() {
-  if (isEdgeRuntime() || getD1Config()) {
+  if (useSupabase()) {
+    const { loadContentArticles: load } = await import("./blogStorageSupabase");
+    return load();
+  }
+  if (getD1Config()) {
     const { loadContentArticles: load } = await import("./blogStorageD1");
     return load();
   }
@@ -22,7 +29,11 @@ export async function loadContentArticles() {
 }
 
 export async function getContentArticle(slug) {
-  if (isEdgeRuntime() || getD1Config()) {
+  if (useSupabase()) {
+    const { getContentArticle: get } = await import("./blogStorageSupabase");
+    return get(slug);
+  }
+  if (getD1Config()) {
     const { getContentArticle: get } = await import("./blogStorageD1");
     return get(slug);
   }
@@ -31,7 +42,11 @@ export async function getContentArticle(slug) {
 }
 
 export async function saveContentArticle(article) {
-  if (isEdgeRuntime() || getD1Config()) {
+  if (useSupabase()) {
+    const { saveContentArticle: save } = await import("./blogStorageSupabase");
+    return save(article);
+  }
+  if (getD1Config()) {
     const { saveContentArticle: save } = await import("./blogStorageD1");
     return save(article);
   }
@@ -40,7 +55,11 @@ export async function saveContentArticle(article) {
 }
 
 export async function deleteContentArticle(slug) {
-  if (isEdgeRuntime() || getD1Config()) {
+  if (useSupabase()) {
+    const { deleteContentArticle: del } = await import("./blogStorageSupabase");
+    return del(slug);
+  }
+  if (getD1Config()) {
     const { deleteContentArticle: del } = await import("./blogStorageD1");
     return del(slug);
   }

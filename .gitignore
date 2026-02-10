@@ -42,8 +42,3 @@ next-env.d.ts
 /public/images/blog/uploads/*.png
 /public/images/blog/uploads/*.webp
 /public/images/blog/uploads/*.gif
-
-# backend blog API (données + uploads)
-/backend/data/
-/backend/uploads/
-/backend/node_modules/

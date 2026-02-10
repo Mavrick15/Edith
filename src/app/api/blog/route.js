@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { blogArticles, blogList, loadContentArticles, saveContentArticle } from "@/lib/blogStorageD1";
+import { blogArticles, blogList, loadContentArticles, saveContentArticle } from "@/lib/blogStorageEdge";
 
 export const runtime = "edge";
 
@@ -47,7 +47,7 @@ export async function POST(request) {
     const saved = await saveContentArticle(article);
     if (!saved) {
       return NextResponse.json(
-        { error: "Impossible d'enregistrer (vérifiez la config D1 et que la table blog_articles existe)" },
+        { error: "Impossible d'enregistrer (vérifiez Supabase ou D1 et la table blog_articles)" },
         { status: 503 }
       );
     }

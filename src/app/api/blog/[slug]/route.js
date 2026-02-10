@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorageD1";
+import { blogArticles, getContentArticle, saveContentArticle, deleteContentArticle } from "@/lib/blogStorageEdge";
 
 export const runtime = "edge";
 
@@ -56,7 +56,7 @@ export async function PUT(request, { params }) {
     const saved = await saveContentArticle(article);
     if (!saved) {
       return NextResponse.json(
-        { error: "Impossible d'enregistrer (vérifiez la config D1 et que la table blog_articles existe)" },
+        { error: "Impossible d'enregistrer (vérifiez Supabase ou D1 et la table blog_articles)" },
         { status: 503 }
       );
     }
@@ -90,7 +90,7 @@ export async function DELETE(request, { params }) {
     const deleted = await deleteContentArticle(slug);
     if (!deleted) {
       return NextResponse.json(
-        { error: "Impossible de supprimer (vérifiez la config D1)" },
+        { error: "Impossible de supprimer (vérifiez Supabase ou D1)" },
         { status: 503 }
       );
     }
