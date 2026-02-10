@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import ArrowIcon from "@/app/ui/icons/ArrowIcon";
+import RichTextToolbar from "@/app/ui/RichTextToolbar";
 import { parseContentToSections, sectionsToContent } from "@/lib/blogContentParser";
 
 export default function AdminBlogForm({ article, onSuccess, onCancel }) {
@@ -16,6 +17,7 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
   const [dragOver, setDragOver] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const fileInputRef = useRef(null);
+  const contentTextareaRef = useRef(null);
 
   useEffect(() => {
     if (article) {
@@ -190,7 +192,7 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
       </div>
 
       <div className="admin-blog-form_card">
-        <h3 className="admin-blog-form_sectionTitle">Titre de l'article</h3>
+        <h3 className="admin-blog-form_sectionTitle">Titre de l&apos;article</h3>
         <input
           type="text"
           className="admin-blog-form_input"
@@ -218,10 +220,17 @@ export default function AdminBlogForm({ article, onSuccess, onCancel }) {
           <div className="admin-blog-form_help">
             <p className="mb-1"><code>##</code> avant un texte = sous-titre</p>
             <p className="mb-1"><code>&gt;</code> avant un texte = citation</p>
+            <p className="mb-1">Sélectionnez du texte puis utilisez la barre pour <strong>gras</strong>, <em>italique</em>, souligné ou police.</p>
             <p className="mb-0">Ligne vide = nouveau paragraphe</p>
           </div>
         )}
+        <RichTextToolbar
+          textareaRef={contentTextareaRef}
+          value={content}
+          onChange={setContent}
+        />
         <textarea
+          ref={contentTextareaRef}
           className="admin-blog-form_textarea"
           rows={14}
           value={content}

@@ -123,6 +123,70 @@ Admin Blog Form
   text-decoration: underline;
 }
 
+/* Barre de formatage riche */
+.rich-text-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+
+.rich-text-toolbar_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #274760;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: rgba(39, 71, 96, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(39, 71, 96, 0.3);
+  }
+
+  .iconify {
+    font-size: 1.25rem;
+  }
+}
+
+.rich-text-toolbar_sep {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: #dee2e6;
+}
+
+.rich-text-toolbar_select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  background: #fff;
+  color: #274760;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #274760;
+  }
+}
+
 .admin-blog-form_help {
   background: #f8f9fa;
   padding: 0.75rem 1rem;
@@ -143,7 +207,7 @@ Admin Blog Form
   width: 100%;
   padding: 1rem;
   border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   font-size: 1rem;
   line-height: 1.6;
   resize: vertical;

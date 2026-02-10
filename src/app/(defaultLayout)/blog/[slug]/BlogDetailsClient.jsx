@@ -10,6 +10,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { parseInlineFormats } from "@/lib/inlineFormatParser";
 
 import bannerImg from "../../../../../public/images/doctors/banner_img_3.png";
 
@@ -106,7 +107,19 @@ export default function BlogDetailsClient({ slug, article, blogList }) {
                   return <h2 key={index}>{section.text}</h2>;
                 }
                 if (section.type === "p") {
-                  return <p key={index}>{section.text}</p>;
+                  const segments = parseInlineFormats(section.text);
+                  return (
+                    <p key={index}>
+                      {segments.map((seg, j) => {
+                        if (seg.type === "text") return <span key={j}>{seg.content}</span>;
+                        if (seg.type === "bold") return <strong key={j}>{seg.content}</strong>;
+                        if (seg.type === "italic") return <em key={j}>{seg.content}</em>;
+                        if (seg.type === "underline") return <u key={j}>{seg.content}</u>;
+                        if (seg.type === "font") return <span key={j} style={{ fontFamily: seg.font }}>{seg.content}</span>;
+                        return <span key={j}>{seg.content}</span>;
+                      })}
+                    </p>
+                  );
                 }
                 if (section.type === "blockquote") {
                   return (
