@@ -1,6 +1,7 @@
 import "./sass/index.scss";
 import Preloader from "./ui/Preloader";
 import WebVitals from "./ui/WebVitals";
+import ToastProvider from "./ui/ToastProvider";
 import { OrganizationSchema, MedicalBusinessSchema } from "./ui/StructuredData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }) {
       <body>
         <Preloader />
         <WebVitals />
+        <ToastProvider />
         {children}
       </body>
     </html>

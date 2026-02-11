@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 import ArrowIcon from "../icons/ArrowIcon";
 import { validateEmail, validateName, validateMessage } from "@/lib/formValidation";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -42,9 +42,8 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setStatus(null);
     setErrors({});
-    
+
     const form = e.target;
     const data = {
       name: form.name.value,
@@ -53,21 +52,24 @@ export default function ContactForm() {
       message: form.message.value,
     };
 
-    // Validation côté client
     const nameValidation = validateName(data.name);
     const emailValidation = validateEmail(data.email);
     const messageValidation = validateMessage(data.message);
 
     if (!nameValidation.valid || !emailValidation.valid || !messageValidation.valid) {
-      setErrors({
+      const errs = {
         name: nameValidation.valid ? undefined : nameValidation.error,
         email: emailValidation.valid ? undefined : emailValidation.error,
         message: messageValidation.valid ? undefined : messageValidation.error,
-      });
+      };
+      setErrors(errs);
+      const firstError = nameValidation.error || emailValidation.error || messageValidation.error;
+      toast.error(firstError);
       return;
     }
 
     setLoading(true);
+    const toastId = toast.loading("Envoi en cours...");
 
     try {
       const res = await fetch("/api/contact", {
@@ -77,14 +79,14 @@ export default function ContactForm() {
       });
       const json = await res.json();
       if (res.ok) {
-        setStatus({ type: "success", message: json.message });
+        toast.success(json.message || "Message envoyé. Nous vous répondrons rapidement.", { id: toastId });
         form.reset();
         setErrors({});
       } else {
-        setStatus({ type: "error", message: json.error || "Erreur" });
+        toast.error(json.error || "Erreur lors de l'envoi.", { id: toastId });
       }
     } catch {
-      setStatus({ type: "error", message: "Erreur de connexion" });
+      toast.error("Erreur de connexion.", { id: toastId });
     } finally {
       setLoading(false);
     }
@@ -188,15 +190,6 @@ export default function ContactForm() {
           )}
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
-        {status && (
-          <div
-            className={`col-12 mb-3 ${
-              status.type === "success" ? "text-success" : "text-danger"
-            }`}
-          >
-            {status.message}
-          </div>
-        )}
         <div className="col-lg-12">
           <div className="cs_height_18" />
           <button

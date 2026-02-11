@@ -2,16 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import ArrowIcon from "../icons/ArrowIcon";
 
 export default function AppointmentFormStyle2() {
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    setStatus(null);
     const form = e.target;
     const data = {
       name: form.name?.value?.trim() || "",
@@ -23,6 +22,8 @@ export default function AppointmentFormStyle2() {
       department: form.specialization?.value || "",
     };
 
+    const toastId = toast.loading("Envoi de votre demande...");
+
     try {
       const res = await fetch("/api/appointment", {
         method: "POST",
@@ -31,13 +32,13 @@ export default function AppointmentFormStyle2() {
       });
       const json = await res.json();
       if (res.ok) {
-        setStatus({ type: "success", message: json.message });
+        toast.success(json.message || "Demande enregistrée. Notre équipe vous contactera.", { id: toastId });
         form.reset();
       } else {
-        setStatus({ type: "error", message: json.error || "Erreur" });
+        toast.error(json.error || "Erreur lors de l'envoi.", { id: toastId });
       }
     } catch {
-      setStatus({ type: "error", message: "Erreur de connexion" });
+      toast.error("Erreur de connexion.", { id: toastId });
     } finally {
       setLoading(false);
     }
@@ -145,16 +146,6 @@ export default function AppointmentFormStyle2() {
           />
         </div>
       </div>
-      {status && (
-        <div
-          className={`mb-2 ${
-            status.type === "success" ? "text-success" : "text-danger"
-          }`}
-          style={{ fontSize: "0.9rem" }}
-        >
-          {status.message}
-        </div>
-      )}
       <button
         type="submit"
         className="cs_btn cs_style_1 w-100"

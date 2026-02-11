@@ -2,19 +2,18 @@
 
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import ArrowIcon from "../icons/ArrowIcon";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function AppointmentForm() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    setStatus(null);
     const form = e.target;
     const data = {
       name: form.name.value,
@@ -29,6 +28,8 @@ export default function AppointmentForm() {
       department: form.department?.value || "",
     };
 
+    const toastId = toast.loading("Envoi de votre demande...");
+
     try {
       const res = await fetch("/api/appointment", {
         method: "POST",
@@ -37,14 +38,14 @@ export default function AppointmentForm() {
       });
       const json = await res.json();
       if (res.ok) {
-        setStatus({ type: "success", message: json.message });
+        toast.success(json.message || "Demande enregistrée. Notre équipe vous contactera pour confirmation.", { id: toastId });
         form.reset();
         setSelectedDate(null);
       } else {
-        setStatus({ type: "error", message: json.error || "Erreur" });
+        toast.error(json.error || "Erreur lors de l'envoi.", { id: toastId });
       }
     } catch {
-      setStatus({ type: "error", message: "Erreur de connexion" });
+      toast.error("Erreur de connexion.", { id: toastId });
     } finally {
       setLoading(false);
     }
@@ -224,15 +225,6 @@ export default function AppointmentForm() {
         </select>
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
-      {status && (
-        <div
-          className={`col-12 mb-3 ${
-            status.type === "success" ? "text-success" : "text-danger"
-          }`}
-        >
-          {status.message}
-        </div>
-      )}
       <div className="col-lg-12">
         <button type="submit" className="cs_btn cs_style_1" disabled={loading}>
           <span>{loading ? "Envoi..." : "Envoyer"}</span>
