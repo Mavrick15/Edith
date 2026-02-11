@@ -69,6 +69,7 @@ export function validateAppointment(body) {
   const errors = [];
   const {
     name,
+    email,
     phone,
     medicalFileNumber,
     preferredDate,
@@ -80,6 +81,13 @@ export function validateAppointment(body) {
   const sanitizedName = sanitizeString(name);
   if (sanitizedName && sanitizedName.length < 2) {
     errors.push("Le nom doit contenir au moins 2 caractères");
+  }
+
+  const sanitizedEmail = sanitizeString(email);
+  if (!sanitizedEmail) {
+    errors.push("L'email est requis");
+  } else if (!EMAIL_REGEX.test(sanitizedEmail)) {
+    errors.push("Format d'email invalide");
   }
 
   const sanitizedPhone = sanitizeString(phone, 30);
@@ -103,6 +111,7 @@ export function validateAppointment(body) {
     valid: true,
     data: {
       name: sanitizedName || null,
+      email: sanitizedEmail,
       phone: sanitizedPhone,
       medicalFileNumber: sanitizedMedicalFile || null,
       preferredDate: sanitizedPreferredDate || null,

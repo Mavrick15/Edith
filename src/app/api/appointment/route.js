@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { validateAppointment } from "@/lib/validation";
 import { checkRateLimit, getClientIP } from "@/lib/rateLimit";
 import { insertAppointmentRequest } from "@/lib/supabaseContactAppointment";
-import { notifyAdminAppointment } from "@/lib/sendAdminNotification";
+import { notifyAdminAppointment, notifyUserAppointment } from "@/lib/sendAdminNotification";
 
 export const runtime = "edge";
 
@@ -42,6 +42,7 @@ export async function POST(request) {
 
     const result = await insertAppointmentRequest({
       name: data.name,
+      email: data.email,
       phone: data.phone,
       medicalFileNumber: data.medicalFileNumber,
       preferredDate: data.preferredDate,
@@ -61,21 +62,43 @@ export async function POST(request) {
       );
     }
 
-    const emailResult = await notifyAdminAppointment({
-      name: data.name,
-      phone: data.phone,
-      medicalFileNumber: data.medicalFileNumber,
-      preferredDate: data.preferredDate,
-      preferredTime: data.preferredTime,
-      reasonForVisit: data.reasonForVisit,
-      department: data.department,
-    });
-    if (!emailResult.ok) {
+    try {
+      const emailResult = await notifyAdminAppointment({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        medicalFileNumber: data.medicalFileNumber,
+        preferredDate: data.preferredDate,
+        preferredTime: data.preferredTime,
+        reasonForVisit: data.reasonForVisit,
+        department: data.department,
+      });
+      if (!emailResult.ok && process.env.NODE_ENV === "development") {
+        console.error("Erreur envoi email admin (rendez-vous):", emailResult.error);
+      }
+    } catch (emailErr) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Envoi email admin (timeout/réseau):", emailErr?.cause?.message || emailErr);
+      }
+    }
+
+    if (data.email) {
       try {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Erreur envoi email admin (rendez-vous):", emailResult.error);
+        const ackResult = await notifyUserAppointment(data.email, {
+          name: data.name,
+          preferredDate: data.preferredDate,
+          preferredTime: data.preferredTime,
+          reasonForVisit: data.reasonForVisit,
+          department: data.department,
+        });
+        if (!ackResult.ok && process.env.NODE_ENV === "development") {
+          console.error("Erreur accusé de réception (rendez-vous):", ackResult.error);
         }
-      } catch (e) {}
+      } catch (ackErr) {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Accusé de réception (timeout/réseau):", ackErr?.cause?.message || ackErr);
+        }
+      }
     }
 
     return NextResponse.json(

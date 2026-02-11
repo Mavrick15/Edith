@@ -18,6 +18,7 @@ export default function AppointmentForm() {
     const form = e.target;
     const data = {
       name: form.name.value,
+      email: form.email?.value || "",
       phone: form.phone.value,
       medicalFileNumber: form.medicalFileNumber?.value || "",
       preferredDate: selectedDate
@@ -75,6 +76,20 @@ export default function AppointmentForm() {
           type="tel"
           className="cs_form_field"
           placeholder="+243 XXX XXX XXX"
+          required
+        />
+        <div className="cs_height_42 cs_height_xl_25" />
+      </div>
+      <div className="col-lg-12">
+        <label className="cs_input_label cs_heading_color" htmlFor="appt-email">
+          E-mail
+        </label>
+        <input
+          id="appt-email"
+          name="email"
+          type="email"
+          className="cs_form_field"
+          placeholder="votre@email.com"
           required
         />
         <div className="cs_height_42 cs_height_xl_25" />

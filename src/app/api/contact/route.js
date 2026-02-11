@@ -53,13 +53,15 @@ export async function POST(request) {
       );
     }
 
-    const emailResult = await notifyAdminContact({ name, email, subject, message });
-    if (!emailResult.ok) {
-      try {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Erreur envoi email admin (contact):", emailResult.error);
-        }
-      } catch (e) {}
+    try {
+      const emailResult = await notifyAdminContact({ name, email, subject, message });
+      if (!emailResult.ok && process.env.NODE_ENV === "development") {
+        console.error("Erreur envoi email admin (contact):", emailResult.error);
+      }
+    } catch (emailErr) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Envoi email admin contact (timeout/réseau):", emailErr?.cause?.message || emailErr);
+      }
     }
 
     return NextResponse.json(

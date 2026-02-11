@@ -15,8 +15,11 @@ export default function AppointmentFormStyle2() {
     const form = e.target;
     const data = {
       name: form.name?.value?.trim() || "",
+      email: form.email?.value?.trim() || "",
       phone: form.phone.value,
       preferredDate: form.date?.value || "",
+      preferredTime: "",
+      reasonForVisit: "",
       department: form.specialization?.value || "",
     };
 
@@ -61,6 +64,26 @@ export default function AppointmentFormStyle2() {
             name="name"
             type="text"
             placeholder="Votre nom"
+          />
+        </div>
+      </div>
+      <div className="cs_appointment_form_field">
+        <div className="cs_appointment_form_icon cs_center rounded-circle cs_white_bg">
+          <Image
+            src="/images/home_4/appointment_icon_1.svg"
+            alt="E-mail"
+            width={24}
+            height={24}
+          />
+        </div>
+        <div className="cs_appointment_form_field_right">
+          <label htmlFor="appt2-email">E-mail</label>
+          <input
+            id="appt2-email"
+            name="email"
+            type="email"
+            placeholder="votre@email.com"
+            required
           />
         </div>
       </div>

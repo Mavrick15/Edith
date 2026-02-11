@@ -54,10 +54,11 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 
 CREATE INDEX IF NOT EXISTS contact_messages_created_at_idx ON contact_messages (created_at DESC);
 
--- Demandes de rendez-vous (page Rendez-vous)
+-- Demandes de rendez-vous (page Rendez-vous) — email requis pour l'accusé de réception
 CREATE TABLE IF NOT EXISTS appointments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
+  email TEXT,
   phone TEXT NOT NULL,
   medical_file_number TEXT,
   preferred_date DATE,
@@ -70,6 +71,9 @@ CREATE TABLE IF NOT EXISTS appointments (
 
 CREATE INDEX IF NOT EXISTS appointments_created_at_idx ON appointments (created_at DESC);
 CREATE INDEX IF NOT EXISTS appointments_status_idx ON appointments (status);
+
+-- Si la table appointments existe déjà sans la colonne email, exécuter :
+-- ALTER TABLE appointments ADD COLUMN IF NOT EXISTS email TEXT;
 ```
 
 Une fois ces tables créées et les variables Supabase configurées (voir §1), les soumissions des formulaires **Contact** et **Rendez-vous** sont enregistrées dans Supabase. Vous pouvez les consulter dans le Dashboard (Table Editor).

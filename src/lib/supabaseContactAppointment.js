@@ -33,7 +33,7 @@ export async function insertContactMessage(data) {
 
 /**
  * Insère une demande de rendez-vous.
- * @param {{ name: string, phone: string, medicalFileNumber?: string, preferredDate?: string, preferredTime?: string, reasonForVisit?: string, department?: string }} data
+ * @param {{ name: string, email: string, phone: string, medicalFileNumber?: string, preferredDate?: string, preferredTime?: string, reasonForVisit?: string, department?: string }} data
  * @returns {Promise<{ ok: boolean, error?: string }>}
  */
 export async function insertAppointmentRequest(data) {
@@ -42,6 +42,7 @@ export async function insertAppointmentRequest(data) {
 
   const { error } = await supabase.from("appointments").insert({
     name: data.name,
+    email: data.email || null,
     phone: data.phone,
     medical_file_number: data.medicalFileNumber || null,
     preferred_date: data.preferredDate || null,
