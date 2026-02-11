@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { validateContact } from "@/lib/validation";
 import { checkRateLimit, getClientIP } from "@/lib/rateLimit";
+import { insertContactMessage } from "@/lib/supabaseContactAppointment";
+import { notifyAdminContact } from "@/lib/sendAdminNotification";
 
 export const runtime = "edge";
 
@@ -38,8 +40,27 @@ export async function POST(request) {
 
     const { name, email, subject, message } = validation.data;
 
-    // TODO: Brancher sur votre backend (envoi email, base de données, etc.)
-    // Exemples : Resend, SendGrid, nodemailer, ou API REST externe
+    const result = await insertContactMessage({ name, email, subject, message });
+    if (!result.ok) {
+      try {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Erreur Supabase contact:", result.error);
+        }
+      } catch (e) {}
+      return NextResponse.json(
+        { error: "Impossible d'enregistrer votre message. Veuillez réessayer." },
+        { status: 503, headers: corsHeaders }
+      );
+    }
+
+    const emailResult = await notifyAdminContact({ name, email, subject, message });
+    if (!emailResult.ok) {
+      try {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Erreur envoi email admin (contact):", emailResult.error);
+        }
+      } catch (e) {}
+    }
 
     return NextResponse.json(
       {

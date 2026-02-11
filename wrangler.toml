@@ -11,3 +11,7 @@ NEXT_PUBLIC_SITE_URL = "https://www.cmedith.com"
 # Supabase — blog (prioritaire si défini, voir SUPABASE_SETUP.md)
 NEXT_PUBLIC_SUPABASE_URL = "https://qcppyjtwnfoyxnidupev.supabase.co"
 
+# Notifications email admin (Contact + Rendez-vous) — Resend
+RESEND_API_KEY=re_8jrz6LBx_DdWsesowM12Vuvyd1a3Rf7KD
+ADMIN_EMAIL=contact@cmedith.com
+FROM_EMAIL=Centre Médical Edith <contact@cmedith.com>

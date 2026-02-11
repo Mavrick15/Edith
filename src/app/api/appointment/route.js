@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { validateAppointment } from "@/lib/validation";
 import { checkRateLimit, getClientIP } from "@/lib/rateLimit";
+import { insertAppointmentRequest } from "@/lib/supabaseContactAppointment";
+import { notifyAdminAppointment } from "@/lib/sendAdminNotification";
 
 export const runtime = "edge";
 
@@ -38,8 +40,43 @@ export async function POST(request) {
 
     const data = validation.data;
 
-    // TODO: Brancher sur votre backend (agenda, base de données, etc.)
-    // Exemples : Google Calendar API, Calendly, ou système de RDV maison
+    const result = await insertAppointmentRequest({
+      name: data.name,
+      phone: data.phone,
+      medicalFileNumber: data.medicalFileNumber,
+      preferredDate: data.preferredDate,
+      preferredTime: data.preferredTime,
+      reasonForVisit: data.reasonForVisit,
+      department: data.department,
+    });
+    if (!result.ok) {
+      try {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Erreur Supabase appointment:", result.error);
+        }
+      } catch (e) {}
+      return NextResponse.json(
+        { error: "Impossible d'enregistrer votre demande. Veuillez réessayer." },
+        { status: 503, headers: corsHeaders }
+      );
+    }
+
+    const emailResult = await notifyAdminAppointment({
+      name: data.name,
+      phone: data.phone,
+      medicalFileNumber: data.medicalFileNumber,
+      preferredDate: data.preferredDate,
+      preferredTime: data.preferredTime,
+      reasonForVisit: data.reasonForVisit,
+      department: data.department,
+    });
+    if (!emailResult.ok) {
+      try {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Erreur envoi email admin (rendez-vous):", emailResult.error);
+        }
+      } catch (e) {}
+    }
 
     return NextResponse.json(
       {
