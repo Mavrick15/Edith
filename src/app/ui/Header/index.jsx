@@ -43,10 +43,10 @@ export default function Header({ logoSrc, variant }) {
                   <Image
                     src={logoSrc}
                     alt="Edith - Centre médical Kinshasa"
-                    height={72}
-                    width={280}
+                    height={140}
+                    width={540}
                     className="cs_header_logo"
-                    sizes="(max-width: 380px) 220px, (max-width: 575px) 260px, (max-width: 1199px) 320px, (max-width: 1400px) 340px, (max-width: 1700px) 380px, 420px"
+                    sizes="(max-width: 380px) 420px, (max-width: 575px) 460px, (max-width: 1199px) 600px, (max-width: 1400px) 640px, (max-width: 1700px) 700px, 780px"
                     priority
                   />
                 </Link>
@@ -117,11 +117,12 @@ export default function Header({ logoSrc, variant }) {
                     aria-expanded={sideNav}
                   >
                     <svg
-                      width={35}
-                      height={30}
+                      width={28}
+                      height={24}
                       viewBox="0 0 35 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      className="cs_sidebar_toggle_icon"
                     >
                       <path
                         d="M0.483887 2.46544C0.483887 1.10383 1.14618 0 1.96315 0H33.5208C34.3377 0 35 1.10383 35 2.46544C35 3.82708 34.3377 4.93088 33.5208 4.93088H1.96315C1.14618 4.93088 0.483887 3.82708 0.483887 2.46544Z"

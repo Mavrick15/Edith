@@ -36,6 +36,13 @@
       color: $accent;
     }
   }
+  .cs_sidebar_toggle_btn {
+    .cs_sidebar_toggle_icon {
+      width: 28px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+  }
 }
 .cs_site_header.cs_style1 {
   .cs_main_header_in,
@@ -44,8 +51,8 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 100px;
-    min-height: 100px;
+    height: 145px;
+    min-height: 145px;
     position: relative;
   }
   .cs_main_header_right {
@@ -306,8 +313,8 @@
 .cs_site_branding_logo {
   display: flex;
   align-items: center;
-  max-width: 420px;
-  height: 72px;
+  max-width: 780px;
+  height: 140px;
   overflow: hidden;
   /* Next.js Image wrapper + img */
   span,
@@ -316,43 +323,43 @@
     width: auto !important;
     height: auto !important;
     max-width: 100% !important;
-    max-height: 72px !important;
+    max-height: 140px !important;
     object-fit: contain;
   }
   /* Desktop : logo s'adapte selon la largeur d'écran */
   @media (max-width: 1700px) {
-    max-width: 380px;
-    height: 66px;
+    max-width: 700px;
+    height: 126px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 66px !important;
+      max-height: 126px !important;
     }
   }
   @media (max-width: 1400px) {
-    max-width: 340px;
-    height: 60px;
+    max-width: 640px;
+    height: 116px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 60px !important;
+      max-height: 116px !important;
     }
   }
   @media (max-width: 1199px) {
-    max-width: 320px;
-    height: 70px;
+    max-width: 600px;
+    height: 124px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 70px !important;
+      max-height: 124px !important;
     }
   }
   @media (max-width: 575px) {
-    max-width: 260px;
-    height: 62px;
+    max-width: 460px;
+    height: 108px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 62px !important;
+      max-height: 108px !important;
     }
   }
   @media (max-width: 380px) {
-    max-width: 220px;
-    height: 56px;
+    max-width: 420px;
+    height: 100px;
     span, img.cs_header_logo, .cs_header_logo {
-      max-height: 56px !important;
+      max-height: 100px !important;
     }
   }
 }
@@ -679,9 +686,9 @@
       background-color: #fff;
       color: $primary;
       padding: 10px 0;
-      top: 100px;
+      top: 145px;
       overflow: auto;
-      height: calc(100vh - 100px);
+      height: calc(100vh - 145px);
       line-height: 1.6em;
       transition: all 0.4s ease;
       &.cs_active {
@@ -789,7 +796,7 @@
   }
 
   .cs_site_header.cs_style1 .cs_main_header_in {
-    height: 90px;
+    height: 128px;
   }
 
   .cs_site_header .current-menu-item > a:before {
@@ -837,7 +844,7 @@
     left: 50%;
     transform: translateX(-50%);
     position: fixed;
-    top: 100px;
+    top: 145px;
     a {
       padding: 10px;
     }
