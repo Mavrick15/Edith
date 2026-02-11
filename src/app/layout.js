@@ -2,7 +2,7 @@ import "./sass/index.scss";
 import Preloader from "./ui/Preloader";
 import WebVitals from "./ui/WebVitals";
 import ToastProvider from "./ui/ToastProvider";
-import { OrganizationSchema, MedicalBusinessSchema } from "./ui/StructuredData";
+import { OrganizationSchema, MedicalBusinessSchema, WebSiteSchema } from "./ui/StructuredData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
@@ -62,6 +62,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         {/* Preload pour améliorer les performances */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
+        <WebSiteSchema />
         <OrganizationSchema />
         <MedicalBusinessSchema />
       </head>

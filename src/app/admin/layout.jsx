@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Administration",
   description: "Espace d'administration pour les médecins - Edith Centre médical",
+  robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({ children }) {

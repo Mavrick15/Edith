@@ -5,6 +5,39 @@
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
+/** Schéma WebSite pour l'indexation (sitelinks, recherche) */
+export function WebSiteSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Centre Médical Edith",
+    alternateName: "Edith - Gynécologie & fertilité Kinshasa",
+    url: siteUrl,
+    description:
+      "Centre médical spécialisé en gynécologie-obstétrique, fertilité et PMA à Kinshasa, RDC. Suivi de grossesse, FIV, consultations.",
+    inLanguage: "fr-FR",
+    publisher: {
+      "@type": "MedicalOrganization",
+      name: "Edith - Centre médical Kinshasa",
+      logo: `${siteUrl}/images/logo.png`,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",

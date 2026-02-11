@@ -1,80 +1,52 @@
-import { blogList } from "@/lib/blogData";
+import { getBlogData } from "@/lib/blogDataServerEdge";
 import { servicesData } from "@/lib/servicesData";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
-export default function sitemap() {
-  const staticPages = [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/appointments`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/tarifs`,
-      lastModified: new Date(),
+export const dynamic = "force-dynamic";
+
+/** Pages statiques avec priorité et fréquence pour l'indexation */
+const STATIC_ROUTES = [
+  { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "about", changeFrequency: "monthly", priority: 0.9 },
+  { path: "services", changeFrequency: "monthly", priority: 0.9 },
+  { path: "blog", changeFrequency: "weekly", priority: 0.9 },
+  { path: "appointments", changeFrequency: "monthly", priority: 0.9 },
+  { path: "contact", changeFrequency: "monthly", priority: 0.9 },
+  { path: "tarifs", changeFrequency: "monthly", priority: 0.8 },
+  { path: "gallery", changeFrequency: "monthly", priority: 0.7 },
+  { path: "doctor-detail", changeFrequency: "monthly", priority: 0.8 },
+];
+
+export default async function sitemap() {
+  const now = new Date();
+  const staticEntries = STATIC_ROUTES.map(({ path, changeFrequency, priority }) => ({
+    url: path ? `${BASE_URL}/${path}` : BASE_URL,
+    lastModified: now,
+    changeFrequency,
+    priority,
+  }));
+
+  let blogEntries = [];
+  try {
+    const { list } = await getBlogData();
+    blogEntries = (list || []).map((article) => ({
+      url: `${BASE_URL}/blog/${article.slug}`,
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/gallery`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/doctor-detail`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-  ];
+    }));
+  } catch {
+    blogEntries = [];
+  }
 
-  const blogPages = blogList.map((article) => ({
-    url: `${BASE_URL}/blog/${article.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  const servicePages = servicesData.map((service) => ({
+  const serviceEntries = (servicesData || []).map((service) => ({
     url: `${BASE_URL}/services/${service.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  return [...staticPages, ...blogPages, ...servicePages];
+  return [...staticEntries, ...blogEntries, ...serviceEntries];
 }
