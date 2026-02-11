@@ -4,6 +4,7 @@ import { servicesData } from "@/lib/servicesData";
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
 
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 /** Pages statiques avec priorité et fréquence pour l'indexation */
