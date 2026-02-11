@@ -6,10 +6,30 @@ import { getBlogData } from "@/lib/blogDataServerEdge";
 import bannerImg from "../../../../public/images/about/banner_img.png";
 import bannerImgCta from "../../../../public/images/doctors/banner_img_3.png";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.cmedith.com";
+
 export const metadata = {
   title: "Blog",
   description:
     "Articles sur la fertilité, la gynécologie et la santé reproductive. Conseils et actualités du centre médical Edith à Kinshasa.",
+  alternates: { canonical: `${siteUrl}/blog` },
+  openGraph: {
+    title: "Blog | Edith - Centre médical Kinshasa",
+    description:
+      "Articles sur la fertilité, la gynécologie et la santé reproductive. Conseils et actualités du centre médical Edith à Kinshasa.",
+    url: `${siteUrl}/blog`,
+    siteName: "Edith - Centre médical Kinshasa",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Edith - Centre médical Kinshasa" }],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Edith - Centre médical Kinshasa",
+    description:
+      "Articles sur la fertilité, la gynécologie et la santé reproductive. Conseils et actualités du centre médical Edith à Kinshasa.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export const runtime = "edge";

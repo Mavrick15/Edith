@@ -11,6 +11,7 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: "#274760",
+  viewportFit: "cover",
 };
 
 export const metadata = {
@@ -30,18 +31,37 @@ export const metadata = {
     template: "%s | Edith - Gynécologie & fertilité Kinshasa",
   },
   description: "Gynécologie-obstétrique, maternité & fertilité à Kinshasa. Suivi de grossesse, accouchement, FIV et PMA — accompagner votre projet parental.",
+  keywords: [
+    "gynécologie Kinshasa",
+    "obstétrique Kinshasa",
+    "fertilité RDC",
+    "PMA Kinshasa",
+    "FIV Kinshasa",
+    "centre médical Kinshasa",
+    "suivi grossesse",
+    "Edith centre médical",
+  ],
   openGraph: {
     title: "Edith - Gynécologie, obstétrique & fertilité à Kinshasa",
     description: "Gynécologie-obstétrique, maternité & fertilité à Kinshasa. Suivi de grossesse, accouchement, FIV et PMA — accompagner votre projet parental.",
     type: "website",
     locale: "fr_FR",
     siteName: "Edith - Centre médical Kinshasa",
-    // Image générée par opengraph-image.jsx (1200×630)
+    url: siteUrl,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Edith - Centre médical Kinshasa | Gynécologie, fertilité & PMA",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Edith - Gynécologie, obstétrique & fertilité à Kinshasa",
     description: "Gynécologie-obstétrique, maternité & fertilité à Kinshasa. Suivi de grossesse, accouchement, FIV et PMA.",
+    images: ["/opengraph-image"],
   },
   alternates: {
     canonical: siteUrl,

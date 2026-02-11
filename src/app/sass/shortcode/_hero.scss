@@ -6,6 +6,9 @@
   height: 1200px;
   padding-bottom: 110px;
   position: relative;
+  /* Étendre le hero sous la barre de statut pour supprimer la bande blanche (safe area) */
+  margin-top: calc(-1 * env(safe-area-inset-top, 0));
+  padding-top: env(safe-area-inset-top, 0);
   @media (max-width: 1700px) {
     height: 1075px;
   }

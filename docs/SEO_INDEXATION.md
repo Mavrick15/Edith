@@ -47,11 +47,16 @@ Vérification possible : [Google Rich Results Test](https://search.google.com/te
 
 - **metadataBase** : URL de base du site pour les URLs canoniques et Open Graph.
 - **Title** : titre par défaut + template par page (`%s | Edith - Gynécologie & fertilité Kinshasa`).
-- **Description** : meta description par défaut et par page (about, blog, contact, etc.).
-- **Open Graph** : titre, description, type `website`, locale `fr_FR`, `siteName`.
-- **Twitter** : `summary_large_image`, titre et description.
-- **Canonical** : défini au niveau global ; à surcharger par page si besoin (ex. pagination, variantes).
+- **Description** : meta description par défaut et par page (about, blog, contact, services, etc.).
+- **Keywords** : mots-clés principaux au niveau du layout (gynécologie Kinshasa, fertilité RDC, PMA, FIV, etc.).
+- **Open Graph** : titre, description, type `website`, locale `fr_FR`, `siteName`, **images** (image par défaut 1200×630 générée par `opengraph-image.jsx`, ou image dédiée pour articles/blog et pages services).
+- **Twitter** : `summary_large_image`, titre, description et **images** pour un rendu optimal lors du partage.
+- **Canonical** : défini au niveau global ; surchargé sur chaque page importante (accueil, about, contact, blog, services, tarifs, galerie, RDV, médecin, et sur chaque article / page service).
 - **Admin** : `robots: { index: false, follow: false }` sur toutes les pages sous `/admin` pour éviter l’indexation de l’espace d’administration.
+
+### Image Open Graph par défaut
+
+Le fichier `src/app/opengraph-image.jsx` génère une image 1200×630 (couleurs marque #274760, texte « Edith », « Centre médical Kinshasa », « Gynécologie • Fertilité • PMA »). Elle est utilisée pour le partage social lorsque la page n’en définit pas une autre (ex. articles de blog et pages services ont leur propre image).
 
 ---
 

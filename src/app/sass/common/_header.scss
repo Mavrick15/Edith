@@ -19,8 +19,10 @@
   position: absolute;
   width: 100%;
   left: 0;
-  top: 0px;
+  top: 0;
   transition: all 0.4s ease;
+  /* Extension sous la barre de statut sur mobile (safe area) */
+  padding-top: env(safe-area-inset-top, 0);
 }
 .cs_toolbox {
   display: flex;

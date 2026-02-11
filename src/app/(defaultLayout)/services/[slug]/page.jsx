@@ -21,6 +21,7 @@ export function generateMetadata({ params }) {
   return {
     title: service.title,
     description,
+    alternates: { canonical: pageUrl },
     openGraph: {
       title: service.title,
       description,
